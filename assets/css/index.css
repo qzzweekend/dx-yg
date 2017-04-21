@@ -1,0 +1,25 @@
+body {
+    background-color: #f9f9f7;
+}
+
+.index_top_right div {
+    text-align: center;
+    height: 25px;
+    line-height: 10px;
+}
+
+.index_top_right tr {
+    height: 49px;
+}
+
+.index_top_right td {
+    height: 49px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 8px;
+}
+
+.index_top_right .line {
+    border-left: 1px solid #a8bec9;
+    padding: 11px 0px 3px 0px;
+}

@@ -1,0 +1,30 @@
+{
+  "data":[
+    {
+      "pId": 1.3,
+      "psLevel": 4,
+      "deviceTyp": 1,
+      "name": "有功功率",
+      "nodeKey": "24",
+      "unit": "kW",
+      "atype": "0",
+      "ctype": "0",
+      "psId": "108816",
+      "id": 24,
+      "fd_dev_class_id":3
+    },
+    {
+      "pId": 1.3,
+      "psLevel": 4,
+      "deviceType": 1,
+      "name": "日发电量",
+      "nodeKey": "1",
+      "unit": "kWh",
+      "atype": "1",
+      "ctype": "2",
+      "psId": "108816",
+      "id": 1,
+      "fd_dev_class_id":3
+    }
+  ]
+}

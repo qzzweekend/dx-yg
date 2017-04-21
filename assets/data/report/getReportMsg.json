@@ -1,0 +1,42 @@
+{
+  "result_code": "1",
+  "result_msg": "success",
+  "result_data": {
+    "ReportMessage": [
+      {
+        "ischeck": 1,
+        "role_id": 0,
+        "moudle_url": "",
+        "photo_url": "http://file.isolarcloud.com/report/cover/1.png?a=2",
+        "report_name": "运行日报",
+        "report_id": 1,
+        "orderid": 1,
+        "type": 1,
+        "reporturl": "/jsp/portal/psReport/psReportdaily.jsp"
+      },
+      {
+        "ischeck": 1,
+        "role_id": 0,
+        "moudle_url": "",
+        "photo_url": "http://file.isolarcloud.com/report/cover/2.png?a=2",
+        "report_name": "运行月报",
+        "report_id": 2,
+        "orderid": 2,
+        "type": 1,
+        "reporturl": "/jsp/portal/psReport/psReportmonth.jsp"
+      },
+      {
+        "ischeck": 1,
+        "role_id": 0,
+        "moudle_url": "",
+        "photo_url": "http://file.isolarcloud.com/report/cover/3.png?a=3",
+        "report_name": "运行年报",
+        "report_id": 3,
+        "orderid": 3,
+        "type": 1,
+        "reporturl": "/jsp/portal/psReport/psReportyear.jsp"
+      }
+    ]
+  },
+  "user_id": "ODY0Mw=="
+}

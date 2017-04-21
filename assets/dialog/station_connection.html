@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一次接线图</title>
+    <link rel="stylesheet" href="../jsp/plugin/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/asyncbox/skins/default.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/zoom-detect.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/style_blue.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/index.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/jquery-autocomplete/jquery.autocomplete.css">
+    <link rel="stylesheet" href="../jsp/plugin/jquery-select/css/select2.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/jquery.minicolors.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/style_2.0_blue.css"/>
+</head>
+<body>
+<div id="stationConnection">
+
+    <!--------首页右下content-------->
+    <div id="map_wap_div" class="map_wap">
+        <div class="map_select clearfix single_no_show">
+            <div class="map_select clearfix">
+                <div class="map_select_wrap fl" style="height: auto;">
+                    <div class="hd" id="map_select_wraphd">
+                        <a href="javascript:;"><i class="map_seicon_1" title="电站名称"></i>
+                            <span class="secondnav_bg4">电站名称<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_2" title="装机功率"></i>
+                            <span class="secondnav_bg4">装机功率<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_3" title="类型"></i>
+                            <span class="secondnav_bg4">类型<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_4" title="并网时间"></i>
+                            <span class="secondnav_bg4">并网时间<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_5" title="地址确定选择"></i>
+                            <span class="secondnav_bg4">地址确定选择<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contentDiv" class="map_con clearfix">
+            <div class="map_con clearfix" style="padding-right: 80px">
+                <div id="Searchresult"></div>
+                <div id="hiddenresult" style="display: none;"></div>
+                <div class="map_con_fl fl">
+                    <div id="psDetail">
+                        <div id="basecolor" class="basecolor" style="display: none"></div>
+                        <ul class="treeDemoId" @click="getPerSvg($event)">
+                            <li id="gs" class="on"><a href="javascript:;" title="湖北广水II期20MW">湖北广水II期20MW</a></li>
+                            <li id="lw"><a href="javascript:;" title="宁夏灵武50MW">宁夏灵武50MW</a></li>
+                            <li id="jx"><a href="javascript:;" title="山东莒县40MW">山东莒县40MW</a></li>
+                            <li id="hl"><a href="javascript:;" title="四川会理30MW">四川会理30MW</a></li>
+                        </ul>
+                        <input id="totalCount" type="hidden" value="4">
+                    </div>
+                    <div class="map_con_fl_page">
+                        <div class="map_con_fl_page_b" id="Pagination">
+                            <a class="fl pager_class_color prev"></a>
+                            <a class="map_con_fl_pageprev fl prev"></a>
+                            <a class="fl pager_class_color">1</a>
+                            <a class="fl pager_class_color next"></a>
+                            <a class="map_con_fl_pagenext fl next"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="tendencyDiv" class="tendency_ri fr clearfix" >
+                    <div class="tendencyChart" style="overflow-x: hidden; overflow-y: hidden;height:100%;">
+                        <div class="tendencyChart_tit" style="background-color:#ffffff">
+                            <span id="wiring_ps_name">湖北广水II期20MW-</span>主接线图
+
+                            <div class="form-group clearfix fr form-group3" style="right:267px;">
+                                <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-left"><input type="hidden" id="hidden-input" class="demo fl minicolors-input" value="#000000" size="7"><span class="minicolors-swatch"><span class="minicolors-swatch-color" style="background-color: rgb(0, 0, 0);"></span><span style="position: absolute; right: 0px; top: 0px; background-image: initial !important; background-position: initial !important; background-size: initial !important; background-repeat: initial !important; background-attachment: initial !important; background-origin: initial !important; background-clip: initial !important; background-color: rgb(0, 0, 0);"><img src="https://img.isolarcloud.com/webapp/resources/portal/images/color_box.png" alt="" style="position:absolute;left:5px;"></span></span><div style="left:-70px;" class="minicolors-panel minicolors-slider-hue"><div class="minicolors-slider"><div class="minicolors-picker" style="top: 0px;"></div></div><div class="minicolors-opacity-slider"><div class="minicolors-picker"></div></div><div class="minicolors-grid" style="background-color: rgb(255, 0, 0);"><div class="minicolors-grid-inner"></div><div class="minicolors-picker" style="top: 0px; left: 0px;"><div></div></div></div></div></div>
+                            </div>
+                            <div style="position:absolute;top:6px;right:-1px;">
+                                <div class="clearfix fr">
+                                    <div class="allsite_dateri fl clearfix" style="margin-right:40px;">
+                                        <input type="checkbox" class="fl allsite_dateriCheckbox" name="setTime" checked="" id="setTime" onclick="refreshTime();">
+                                        <span class="fl reshdate" style="font-weight: normal">刷新时间</span>
+                            <span id="allsite_dateYear1" class="fl allsite_datej abcd" style="opacity: 0.7;">
+											<em style="opacity: 0.7;"><i id="timeValue">1</i>min</em>
+											<a href="javascript:;" class="allsite_dateUpBtn1"></a>
+											<a href="javascript:;" class="allsite_dateDownBtn1"></a>
+                        				</span>
+
+                                    </div>
+                                    <a href="javascript:;" id="change_size" class="change_size change_size2 fl" style="margin-top:0px;"><img src="https://img.isolarcloud.com/webapp/resources/portal/images/change_size2.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="tendencyChart_con svgtend" id="svg_change_color">
+                            <div id="svgDiv"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" value="psFaultPage" id="pageId">
+    </div>
+
+</div>
+
+
+<script src="../jsp/portal/resource/js/jquery-1.8.3.min.js"></script>
+<script src="../js/lib/vlm.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/ejs.js"></script>
+<script src="../js/common/base.js"></script>
+<script src="../js/common/esmpbase.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/slide-js.js"></script>
+<script src="../jsp/plugin/layer/layer.min.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/common.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/media.js"></script>
+<script src="../js/i18n/common_zh_CN.js"></script>
+<script src="../js/common/DateUtil.js"></script>
+<script src="../jsp/plugin/easydialog/easydialog.min.js"></script>
+<script src="../jsp/plugin/jquery-select/js/select2.min.js"></script>
+<script src="../jsp/portal/resource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../jsp/portal/resource/js/jquery.minicolors2.js"></script>
+<script src="../js/portal/allPsList/station_connection.js"></script>
+
+
+</body>
+</html>

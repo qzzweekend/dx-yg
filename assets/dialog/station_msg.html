@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电站信息</title>
+    <link rel="stylesheet" href="../jsp/plugin/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/asyncbox/skins/default.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/zoom-detect.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/style_blue.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/index.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/jquery-autocomplete/jquery.autocomplete.css">
+    <link rel="stylesheet" href="../jsp/portal/resource/css/jquery.mCustomScrollbar.css">
+</head>
+<body>
+<input id="pageTitle" type="hidden" value="psOverView"/>
+<input id="isFrist" type="hidden" value=""/>
+
+<div id="power_msg" style="height: 100%;">
+
+    <div id="map_wap_div" class="map_wap">
+        <div class="map_select clearfix single_no_show" >
+            <div class="map_select clearfix">
+                <div class="map_select_wrap fl" style="height: 30px;">
+                    <div class="hd" id="map_select_wraphd">
+                        <a href="javascript:void(0)"><i class="map_seicon_1" title="电站名称"></i>
+                            <span class="secondnav_bg4">电站名称<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:void(0)"><i class="map_seicon_2" title="装机功率"></i>
+                            <span class="secondnav_bg4">装机功率<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:void(0)"><i class="map_seicon_3" title="类型"></i>
+                            <span class="secondnav_bg4">类型<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:void(0)"><i class="map_seicon_4" title="并网时间"></i>
+                            <span class="secondnav_bg4">并网时间<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:void(0)"><i class="map_seicon_5" title="地址确定选择"></i>
+                            <span class="secondnav_bg4">地址确定选择<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="map_choose fl">
+                    <span class="map_choose_tit" style="">已选筛选条件：</span>
+
+                    <input type="hidden" id="ps_type">
+                    <input type="hidden" id="tools_userId" value="8643">
+                    <input type="hidden" id="tools_lang" value="zh_CN"> <!-- 当前状态下的语言   裴习柱  2016-08-27 -->
+                    <input type="hidden" id="ps_capacity">
+                    <input type="hidden" id="country">
+                    <input type="hidden" id="country_all">
+                    <input type="hidden" id="install_date_start">
+                    <input type="hidden" id="selectordelete" value="">
+                    <span class="map_choose_on" map="1">湖北广水I期20MW<a href="javascript:void(0)" class="map_choose_onclose">×</a></span></div>
+            </div>
+
+
+        </div>
+        <div class="map_select clearfix just_single_show" style="display: none;">
+            <div class="index_scr_sel fl">
+                <select id="ps_select" onchange="toSelectedPsChange()" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true"><option value="108816" selected="">湖北广水I期20MW</option><option value="109189">宁夏灵武50MW</option><option value="109190">山东莒县40MW</option><option value="109192">四川会理30MW</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 180px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-ps_select-container"><span class="select2-selection__rendered" id="select2-ps_select-container" title="湖北广水I期20MW">湖北广水I期20MW</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+            </div>
+            <div id="psName1"></div>
+        </div>
+        <div id="contentDiv" class="map_con clearfix" id="psX2detail">
+                <div class="map_con_fl fl" id="liebiao" >
+                    <div id="powerList">
+                        <ul>
+                            <li id="gs" class="on"><a href="javascript:;" title="湖北广水II期20MW">湖北广水II期20MW</a></li>
+                            <li id="lw"><a href="javascript:;" title="宁夏灵武50MW">宁夏灵武50MW</a></li>
+                            <li id="jx"><a href="javascript:;" title="山东莒县40MW">山东莒县40MW</a></li>
+                            <li id="hl"><a href="javascript:;" title="四川会理30MW">四川会理30MW</a></li>
+                        </ul>
+                    </div>
+                    <div class="map_con_fl_page">
+                        <div class="map_con_fl_page_b" id="Pagination"><a class="fl pager_class_color prev"></a><a class="map_con_fl_pageprev fl prev"></a><a class="fl pager_class_color">1</a><a class="fl pager_class_color next"></a><a class="map_con_fl_pagenext fl next"></a></div>
+                    </div>
+                    <div id="Searchresult"></div>
+                </div>
+
+                <div class="siteMore fr" style="overflow: auto; height: 100%;">
+                    <div class="siteMore_1 siteMorea">
+                        <div class="siteMore_tit clearfix">
+                            <em class="siteMore_tit_btn fl">
+                                <div class="psuser_image" style="vertical-align:middle;padding-top:35px">
+                                </div>
+
+                            </em>
+                            <span class="fl siteMore_tit_txt">电站概览</span>
+                        </div>
+                        <div class="siteMore_con clearfix siteMore_div">
+                            <div class="siteMore_con_lf fl" style="width: 1005px;">
+                                <h1>电站简介:</h1>
+
+                                <div class="siteMore_con_lf_txt" id="ps_des">电站位于广水市李店镇高平村附近空闲的荒地，场址距广水市中心约12km，距李店镇镇中心约4公里，场址坐标为N31°32.61′、E113°59.16′，海拔高度为85米。规划开发总容量为20MWp。站址地区海拔高、气候干燥，日照时间长，年日照时数为2100小时；太阳辐射强度高，年太阳辐射量可达4985&nbsp;MJ/m2；太阳能资源丰富，且本站址所处地区地势平坦开阔的丘陵岗地，即非生态保护区，也非候鸟栖息地，具有很好的太阳能开发利用价值。所发电能将通过新建35kV开闭站以1回35kV线路，接入广水35kV变电站并入电网。</div>
+                            </div>
+                            <div class="siteMore_con_ri fr">
+                                <div class="siteMore_con_ri_tit">
+                                    <ul class="clearfix">
+                                        <li class="on"></li>
+                                        <!--   <li></li>-->
+                                    </ul>
+                                </div>
+                                <div class="siteMore_con_ri_wrap" style="width: 480px; position: relative; height: 350px;">
+                                    <div class="siteMore_con_ri_tog clearfix" style="position: absolute; width: 480px; left: 0px; top: 0px;">
+                                        <div class="bd fl" id="bigPicture_bdContent"><div class="tempWrap" style="overflow:hidden; position:relative; height:320px"><ul class="clearfix" id="bigPicture"><li style="cursor: pointer; height: 320px;" class="clone"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122541124.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161027145334712.png" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161205120924582.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539884.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539888.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539886.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122540875.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122540849.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122540867.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122541089.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122541124.jpg" alt=""></a></li><li style="cursor: pointer; height: 320px;" class="clone"><a><img src="http://file.isolarcloud.com/station/108816/file120161027145334712.png" alt=""></a></li></ul></div></div>
+                                        <div class="hd fr" id="smallPicture_hdContent"><a class="siteMore_con_ri_togprev"></a><div class="tempWrap" style="overflow:hidden; position:relative; height:255px"><ul class="clearfix" id="smPicture" style="height: 1190px; position: relative; padding: 0px; margin: 0px; top: -85px;"><li style="cursor: pointer; height: 75px;" class="clone"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122541124.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class="on"><a><img src="http://file.isolarcloud.com/station/108816/file120161027145334712.png" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161205120924582.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539884.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539888.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539886.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122540875.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122540849.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122540867.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122541089.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class=""><a><img src="http://file.isolarcloud.com/station/108816/file120161216122541124.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class="on clone"><a><img src="http://file.isolarcloud.com/station/108816/file120161027145334712.png" alt=""></a></li><li style="cursor: pointer; height: 75px;" class="clone"><a><img src="http://file.isolarcloud.com/station/108816/file120161205120924582.jpg" alt=""></a></li><li style="cursor: pointer; height: 75px;" class="clone"><a><img src="http://file.isolarcloud.com/station/108816/file120161216122539884.jpg" alt=""></a></li></ul></div><a class="siteMore_con_ri_tognext"></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="siteMore_2 siteMorea">
+                        <div class="siteMore_tit clearfix">
+                            <em class="siteMore_tit_btn fl">
+                                <div class="psuser_image1" style="vertical-align:middle;padding-top:35px">
+                                </div>
+
+                            </em>
+                            <span class="fl siteMore_tit_txt">基本信息</span>
+                        </div>
+                        <div class="siteMore_2_con siteMore_div">
+                            <table class="siteMore_2_conTable1">
+                                <tbody><tr>
+                                    <td class="td1 w85" width="15%">电站名称:</td>
+                                    <td class="td2" width="35%" id="psName">湖北广水I期20MW</td>
+                                    <td class="td1" width="15%">地址:</td>
+                                    <td class="td2" width="35%" id="ps_address">广水李店镇草店乡东2公里</td>
+                                </tr>
+                                <tr>
+                                    <td class="td1" width="15%">行政区划:</td>
+                                    <td class="td2" width="35%" id="ps_area">中国 湖北省 随州市</td>
+                                    <td class="td1" width="15%">经度/纬度:
+                                    </td>
+                                    <td class="td2" width="35%" id="ps_en">经度113.00 纬度32.61</td>
+                                </tr>
+                                <tr>
+                                    <td class="td1 w85" width="15%">电站类型:</td>
+                                    <td class="td2" width="35%" id="ps_type_name">地面电站</td>
+                                    <td class="td1" width="15%">系统方案:</td>
+                                    <td class="td2" width="35%" id="ps_system">组串式</td>
+                                </tr>
+                                <tr>
+                                    <td class="td1" width="15%">资产属性:</td>
+                                    <td class="td2" width="35%" id="ps_to">民营</td>
+                                    <td class="td1" width="15%">调度类型:</td>
+                                    <td class="td2" width="35%" id="ps_dd">省调</td>
+                                </tr>
+                                <tr>
+                                    <td class="td1 w85" width="15%">业主:</td>
+                                    <td class="td2" width="35%" id="ps_owner"></td>
+                                    <td class="td1" width="15%">EPC:</td>
+                                    <td class="td2" width="35%" id="ps_epc"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td1" width="15%">运维商:</td>
+                                    <td class="td2" width="35%" id="ps_oper"></td>
+                                    <td class="td1" width="15%">装机功率:</td>
+                                    <td class="td2" width="35%" id="ps_power">18.4MWp</td>
+                                </tr>
+                                </tbody></table>
+                        </div>
+                    </div>
+
+
+                    <div class="siteMore_3 siteMorea">
+                        <div class="siteMore_tit clearfix">
+                            <em class="siteMore_tit_btn fl">
+                                <div class="psuser_image1" style="vertical-align:middle;padding-top:35px">
+                                </div>
+                            </em>
+                            <span class="fl siteMore_tit_txt">电站管理人员</span>
+                        </div>
+                        <div class="siteMore_3_con siteMore_div">
+                            <table class="siteMore_3_conTable lch-tableBorder" id="psBlock" width="100%"><tbody><tr> <td class="td5">电站管理员：</td><td class="td6">郝宇强</td> <td class="td5">联系方式：</td><td class="td6">18103581719</td> </tr><tr> <td class="td5">电站管理员：</td><td class="td6">黄年兵</td> <td class="td5">联系方式：</td><td class="td6">18872611095</td> </tr><tr> <td class="td5">电站管理员：</td><td class="td6">乐利梁</td> <td class="td5">联系方式：</td><td class="td6">18571343611</td> </tr><tr> <td class="td5">电站管理员：</td><td class="td6">周小龙</td> <td class="td5">联系方式：</td><td class="td6">18581127970</td> </tr><tr> <td class="td5">电站管理员：</td><td class="td6">董松博</td> <td class="td5">联系方式：</td><td class="td6">18699409531</td> </tr><tr> <td class="td5">电站管理员：</td><td class="td6">金燃</td> <td class="td5">联系方式：</td><td class="td6">15614938971</td> </tr><tr> <td class="td5">电站管理员：</td><td class="td6">贺正龙</td> <td class="td5">联系方式：</td><td class="td6" id="">15357182530</td> </tr></tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</div>
+
+<script src="../jsp/portal/resource/js/jquery-1.8.3.min.js"></script>
+<script src="../js/lib/vlm.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/ejs.js"></script>
+<script src="../jsp/portal/resource/js/window_resize.js"></script>
+<script src="../js/common/esmpbase.js"></script>
+<script src="../jsp/plugin/layer/layer.min.js"></script>
+<script src="../js/i18n/common_zh_CN.js"></script>
+<script src="../jsp/portal/resource/js/zoom-detect.js"></script>
+<script src="../js/portal/common/head.js"></script>
+<script src="../jsp/plugin/easydialog/easydialog.min.js"></script>
+<script src="../jsp/plugin/easydialog/locale/easydialog_zh_CN.js"></script>
+<script src="../jsp/plugin/jquery-select/js/select2.min.js"></script>
+<script src="../jsp/portal/resource/js/jquery.circliful.min.js"></script>
+<script src="../jsp/portal/resource/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/echarts.min.js"></script>
+<script src="../js/portal/psUser/psUser.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/media.js"></script>
+<script src="../js/portal/common/left.js"></script>
+<script src="../js/portal/common/tool.js"></script>
+<script src="../jsp/plugin/jquery-autocomplete/jquery.autocomplete.js"></script>
+<script src="../jsp/portal/resource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/portal/allPsList/station_msg.js"></script>
+
+<script>
+    jQuery(".siteMore_con_ri_tog").slide({
+        mainCell: ".bd ul",
+        titCell: ".hd li",
+        effect: "topLoop",
+        autoPlay: true
+    });
+    jQuery(".siteMore_con_ri_tog .hd").slide({
+        mainCell: "ul",
+        prevCell: ".siteMore_con_ri_togprev",
+        nextCell: ".siteMore_con_ri_tognext",
+        vis: 3,
+        effect: "topLoop",
+        scroll: 1
+    });
+    jQuery(".siteMore_con_ri").slide({
+        titCell: ".siteMore_con_ri_tit li",
+        mainCell: ".siteMore_con_ri_wrap",
+        effect: "fold",
+        trigger: "click"
+    })
+</script>
+
+</body>
+</html>

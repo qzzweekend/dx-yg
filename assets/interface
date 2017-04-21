@@ -1,0 +1,1294 @@
+/****************************************************************************/
+API请求Head头设置
+URL:http://192.168.2.213:8001/api/GetServiceApiResult
+
+Content-Type: application/json
+Host: 192.168.2.213:8001
+Content-Length: 64
+
+/****************************************************************************/
+
+模块-用户中心（10-开头）
+-----------------------------------------------------------------------------
+API名称 ：     获取用户列表--待确认
+APICode ：     10000001
+RequestJson： {"parameters":[],"foreEndType":2,"code":"10000001"}
+ResponseJson  {"success":true,"message":"ok","data":null,"code":null}
+
+
+/****************************************************************************/
+集团业务模块（20-开头）
+-----------------------------------------------------------------------------
+API名称 ：     获取实时数据
+APICode ：     20000001
+RequestJson： {"parameters":{"CultureName":"","VerifiationCCodeType":"1","datas":["ALL_POWER_DAY","all_power","ALL_PW","all_power_year"]},"foreEndType":2,"code":"20000001"}
+ResponseJson：  {"success":true,"message":"ok","data":[{"key":"all_power_day","data":"30.84716"},{"key":"all_power","data":"2524.241"},{"key":"all_pw","data":"968.7716"},{"key":"all_power_year","data":"104.241"}],"code":null}
+
+
+
+
+         
+
+/****************************************************************************/
+集团业务模块（20-开头）
+-----------------------------------------------------------------------------
+API名称 ：     获取PR 性能排名
+APICode ：     20000002
+RequestJson： {
+					"parameters": {
+						"ctype": "1",
+						"sorttype": "1",
+						"sort": "1",
+						"starttime": "20170101000000",
+						"endtime": "20170104000000",
+						"topn": "7",
+						"stationid": ""
+					},
+					"foreEndType": 2,
+					"code": "20000002"
+				}
+ResponseJson：{"success":true,"message":"ok","data":[{"pr":105.1211661329,"id":0,"fd_station_id":"jx","fd_log_date":null,"fd_power_day":0.0,"fd_power_curr":0.0,"fd_pw_curr":0.0,"fd_radia_curr":0.0,"update_time":null},{"pr":68.8129481730,"id":0,"fd_station_id":"lw","fd_log_date":null,"fd_power_day":0.0,"fd_power_curr":0.0,"fd_pw_curr":0.0,"fd_radia_curr":0.0,"update_time":null}],"code":null}
+
+请求字段说明：
+
+						"ctype": "1",		1：按电站分组；2：按电站、时间分组
+						"sorttype": "1",	1：按时间排序；2：按PR排序
+						"sort": "1",		1:降序；2:升序
+						"starttime":	"20170101000000",	开始时间:yyyyMMddHHmmss
+						"endtime":		"20170104000000",	结束时间:yyyyMMddHHmmss
+						"topn": "7",		取多少个
+						"stationid": ""		电站ID：为空就是所有
+						equivalenthour:		等效小时 
+
+
+
+-----------------------------------------------------------------------------
+API名称 ：     获取发电量模块数据
+APICode ：     20000003
+RequestJson： {"parameters":{},"foreEndType":2,"code":"20000003"}
+ResponseJson：{"success":true,"message":"ok","data":{"fd_make_money":0.0,"fd_all_pw":4136.38,"fd_all_power":2580.75,"fd_all_power_day":79188.83,"fd_all_power_year":160.75,"fd_make_money_unit":null,"fd_all_pw_unit":"kw","fd_all_power_unit":"kwh","fd_all_power_day_unit":"kwh","fd_all_power_year_unit":"kwh","fd_so2_reduce":774.23,"fd_co2_reduce":2.57,"fd_tree_reduce":140.6,"fd_coal_reduce":10426.24,"fd_so2_reduce_unit":"吨","fd_co2_reduce_unit":"万吨","fd_tree_reduce_unit":"万颗","fd_coal_reduce_unit":"吨","tbpowertypes":[{"fd_station_status":"0","fd_station_statusstr":"在建","fd_station_count":"6","fd_intercon_cap":"260.00","fd_unit":"兆瓦"},{"fd_station_status":"1","fd_station_statusstr":"并网","fd_station_count":"8","fd_intercon_cap":"187.00","fd_unit":"兆瓦"},{"fd_station_status":"2","fd_station_statusstr":"未建","fd_station_count":"12","fd_intercon_cap":"430.00","fd_unit":"兆瓦"}]},"code":null}
+
+返回字段说明：
+{
+    "success": true,
+    "message": "ok",
+    "data": {
+		"fd_safety_daycount": 194,//安全天数
+        "fd_make_money": 0,//今日收益
+        "fd_make_money_unit": null,//今日收益单位
+        "fd_all_make_money": 0,//累积收益
+        "fd_all_make_money_unit": null,//累积收益单位
+        "fd_all_pw": -118.6,//当前功率
+        "fd_all_power": 2547.99,//累积发电量
+        "fd_all_power_day": 22.79,//当天发电量
+        "fd_all_power_year": 127.99,//当年发电量
+        "fd_all_pw_unit": "kw",//功率单位
+        "fd_all_power_unit": "kwh",//累积发电量单位
+        "fd_all_power_day_unit": "kwh",//当天发电量单位
+        "fd_all_power_year_unit": "kwh",//当年发电量单位
+        "fd_so2_reduce": 764.4,//二氧化硫
+        "fd_co2_reduce": 2.54,//二氧化碳
+        "fd_tree_reduce": 138.81,//等效植树
+        "fd_coal_reduce": 10293.88,//标准煤
+        "fd_so2_reduce_unit": "吨",//二氧化硫单位
+        "fd_co2_reduce_unit": "万吨",//二氧化碳单位
+        "fd_tree_reduce_unit": "万颗",//等效植树单位
+        "fd_coal_reduce_unit": "吨"//标准煤单位
+			fd_all_intercon_cap:240 // 装机容量
+		 "tbpowertypes": [
+            {
+                "fd_station_status": "1",
+                "fd_station_statusstr": "在建",
+                "fd_station_count": "6",
+                "fd_intercon_cap": "260.00",
+                "fd_unit": "兆瓦"
+            },
+            {
+                "fd_station_status": "2",
+                "fd_station_statusstr": "并网",
+                "fd_station_count": "8",
+                "fd_intercon_cap": "187.00",
+                "fd_unit": "兆瓦"
+            },
+            {
+                "fd_station_status": "0",
+                "fd_station_statusstr": "未建",
+                "fd_station_count": "12",
+                "fd_intercon_cap": "430.00",
+                "fd_unit": "兆瓦"
+            }]
+			"tbstationinfos": [
+            {
+                "fd_station_desc": "四川会理电站全景",
+                "fd_station_pic": "http://192.168.2.213:8001\\Resources\\pic\\center\\四川会理电站全景.png"
+            },
+            {
+                "fd_station_desc": "宁夏灵武电站全景",
+                "fd_station_pic": "http://192.168.2.213:8001\\Resources\\pic\\center\\宁夏灵武电站全景.png"
+            },
+            {
+                "fd_station_desc": "广水高平电站全景图",
+                "fd_station_pic": "http://192.168.2.213:8001\\Resources\\pic\\center\\广水高平电站全景图.png"
+            }
+        ]
+    },
+    "code": null
+}
+
+
+
+
+-----------------------------------------------------------------------------
+API名称 ：     获取计划发电量模块数据
+APICode ：     20000004
+RequestJson： {
+					"parameters": {
+						"datatype": "day",
+						"sorttype": "1",
+						"sort": "1",
+						"starttime": "20170101000000",
+						"endtime": "20170104000000",
+						"topn": "7",
+						"stationid": "lw"
+					},
+					"foreEndType": 2,
+					"code": "20000004"
+				}
+ResponseJson：{"success":true,"message":"ok","data":{"fd_unit":"万kWh","datas":[{"fd_station_id":"ALL","fd_scheduledata":117.38,"fd_power_day":1286.722684,"fd_log_date_max":"2017-01-31T00:00:00","datapower":1286.72,"datascheduledays":1096.16,"fd_sched_power_mon":990.00,"fd_day":0,"fd_year":2017,"fd_month":1,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":120.29,"fd_power_day":100.025142,"fd_log_date_max":"2017-02-04T00:00:00","datapower":1386.75,"datascheduledays":162.84,"fd_sched_power_mon":1140.00,"fd_day":0,"fd_year":2017,"fd_month":2,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1255.00,"fd_day":0,"fd_year":2017,"fd_month":3,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1320.00,"fd_day":0,"fd_year":2017,"fd_month":4,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1365.00,"fd_day":0,"fd_year":2017,"fd_month":5,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1365.00,"fd_day":0,"fd_year":2017,"fd_month":6,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1425.00,"fd_day":0,"fd_year":2017,"fd_month":7,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1425.00,"fd_day":0,"fd_year":2017,"fd_month":8,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1475.00,"fd_day":0,"fd_year":2017,"fd_month":9,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1270.00,"fd_day":0,"fd_year":2017,"fd_month":10,"fd_unit":null},{"fd_station_id":"ALL","fd_scheduledata":0.0,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":0.0,"datascheduledays":0.0,"fd_sched_power_mon":1220.00,"fd_day":0,"fd_year":2017,"fd_month":11,"fd_unit":null}],"datayears":[{"fd_station_id":"ALL","fd_scheduledata":9.00,"fd_power_day":0.0,"fd_log_date_max":"0001-01-01T00:00:00","datapower":1386.747826,"datascheduledays":141.44,"fd_sched_power_mon":0.0,"fd_day":0,"fd_year":2017,"fd_month":0,"fd_unit":null}]},"code":null}
+
+请求字段说明：
+
+						"datatype": "day",		day：获取天数据；month：获取月的数据；year:获取年的数据
+						"sorttype": "1",	1：按时间排序；
+						"sort": "1",		1:降序；2:升序
+						"starttime":	"20170101000000",	开始时间:yyyyMMddHHmmss
+						"endtime":		"20170109000000",	结束时间:yyyyMMddHHmmss
+						"stationid": ""		电站ID：为空就是所有 
+
+获取数据说明：	{
+					"data": [
+						{
+							"fd_station_id": "LW",//电站名称
+							"fd_scheduledata": 98.51,//计划完成比
+							"fd_day": 0,//天时候有用
+							"fd_year": 2017,//年
+							"fd_month": 1,//月
+							"fd_unit": null
+						}
+					],
+					"code": null
+				}
+-----------------------------------------------------------------------------
+API名称 ：     获取发电量趋势统计
+APICode ：     20000005
+RequestJson： {
+					"parameters": {
+						"stationtype": "all",
+						"timetype": "1",
+						"sorttype": "1",
+						"sort": "1",
+						"starttime": "20170101000000",
+						"endtime": "20170104000000",
+						"topn": "7",
+						"stationid": "ALL"
+					},
+					"foreEndType": 2,
+					"code": "20000005"
+				}
+ResponseJson：{"success":true,"message":"ok","data":{"fd_unit":"万kWh","fd_datas":[{"fd_datetime":"22:55","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-106.021701,"fd_radia_curr":0.0,"update_time":null},{"fd_datetime":"22:50","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-0.095920,"fd_radia_curr":0.0,"update_time":null},{"fd_datetime":"22:45","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-123.675990,"fd_radia_curr":0.0,"update_time":null},{"fd_datetime":"22:40","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-0.091520,"fd_radia_curr":0.0,"update_time":null},{"fd_datetime":"22:35","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-123.671590,"fd_radia_curr":0.0,"update_time":null},{"fd_datetime":"22:30","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-123.681270,"fd_radia_curr":0.0,"update_time":null},{"fd_datetime":"22:25","fd_station_name":"ALL","equivalenthour":null,"pr":0.0,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":31.804380,"fd_power_curr":0.0,"fd_pw_curr":-123.681270,"fd_radia_curr":0.0,"update_time":null}]},"code":null}
+
+请求字段说明：
+						"stationtype": "all",   all或者null：获取发电量all、或者单电站stationid数据；
+												allstation：获取所有并网电站的数据
+						
+						timetype：	//0：按5分钟排序YYYY-mm-DD HH:mm；
+									//1：按小时排序 HH
+									//2: 按天；dd
+									//3：按月；YYYY-mm
+									//4：按天；每天；YYYY-mm-DD
+									//5：按小时； 结果为YYYY-mm-DD HH
+									//6：按月；mm
+									
+						"sorttype": "1",	1：按时间排序；
+						"sort": "1",		1:降序；2:升序
+						"starttime":	"20170101000000",	开始时间:yyyyMMddHHmmss
+						"endtime":		"20170109000000",	结束时间:yyyyMMddHHmmss
+						"topn": "100",		取多少个
+						"stationid": ""		电站ID：为空就是所有 
+
+获取数据说明：	fd_datetime：		时间
+				fd_station_name：	电站名称，其中ALL是所有
+				fd_power_day：		发电量
+				fd_pw_curr:			功率---天数据有。 
+				equivalenthour:		等效小时 
+				fd_pw_curr_avg		平均功率
+-----------------------------------------------------------------------------
+API名称 ：     获取电站列表
+APICode ：     20000006
+RequestJson： {"parameters":{"stationid":"","statusstr":""},"foreEndType":2,"code":"20000006"}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_station_statusstr":"并网","id":1,"fd_station_id":1,"fd_station_code":"gs","fd_station_name":"湖北广水i期20mw","fd_address":"湖北广水","fd_captain":"郝宇强","fd_station_capacity":20.000,"fd_intercon_cap":5000.000,"fd_sys_solut":"地面式","fd_longitude":"e113°59′","fd_dimens":"n31°32′","fd_start_time":"2016-06-30","fd_end_time":"","fd_station_status":1,"fd_is_collection":1,"fd_ave_equ_hour_year":1162.30,"fd_irra_year":4985.00,"fd_ave_power_year":22520.00,"fd_create_time":"2016-11-29t13:59:35.264+08:00","fd_update_time":"2016-12-26t17:33:21.459+08:00"},{"fd_station_statusstr":"并网","id":2,"fd_station_id":2,"fd_station_code":"lw","fd_station_name":"宁夏灵武50mw","fd_address":"宁夏灵武","fd_captain":"马明生","fd_station_capacity":50.000,"fd_intercon_cap":50000.900,"fd_sys_solut":"地面式","fd_longitude":"e106°25′","fd_dimens":"n37°45′","fd_start_time":"","fd_end_time":"","fd_station_status":1,"fd_is_collection":1,"fd_ave_equ_hour_year":1445.70,"fd_irra_year":5889.50,"fd_ave_power_year":72282.99,"fd_create_time":"2016-12-08t14:04:06.951+08:00","fd_update_time":"2016-12-26t09:59:02.762+08:00"},{"fd_station_statusstr":"并网","id":3,"fd_station_id":3,"fd_station_code":"hl","fd_station_name":"四川会理30mw","fd_address":"四川会理","fd_captain":"","fd_station_capacity":30.000,"fd_intercon_cap":30000.000,"fd_sys_solut":"地面式","fd_longitude":"e102°07′","fd_dimens":"n26°13′","fd_start_time":"","fd_end_time":"","fd_station_status":1,"fd_is_collection":1,"fd_ave_equ_hour_year":1287.50,"fd_irra_year":5912.00,"fd_ave_power_year":39397.00,"fd_create_time":"2016-12-08t14:04:06.956+08:00","fd_update_time":"2017-01-04t09:13:58.895+08:00"},{"fd_station_statusstr":"并网","id":4,"fd_station_id":4,"fd_station_code":"jx","fd_station_name":"山东莒县40mw","fd_address":"山东莒县","fd_captain":"","fd_station_capacity":40.000,"fd_intercon_cap":40000.000,"fd_sys_solut":"地面式","fd_longitude":"e118°57′","fd_dimens":"n35°52′","fd_start_time":"","fd_end_time":"","fd_station_status":1,"fd_is_collection":1,"fd_ave_equ_hour_year":1087.00,"fd_irra_year":5342.85,"fd_ave_power_year":43464.00,"fd_create_time":"2016-12-08t14:04:06.956+08:00","fd_update_time":"2017-01-04t09:13:51.661+08:00"},{"fd_station_statusstr":"并网","id":5,"fd_station_id":5,"fd_station_code":"tn","fd_station_name":"吉林洮南22mw","fd_address":"吉林洮南","fd_captain":"","fd_station_capacity":22.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e122°53′","fd_dimens":"n45°15′","fd_start_time":"","fd_end_time":"","fd_station_status":1,"fd_is_collection":1,"fd_ave_equ_hour_year":1309.00,"fd_irra_year":5198.70,"fd_ave_power_year":28790.25,"fd_create_time":"2016-12-08t14:04:06.956+08:00","fd_update_time":"2016-12-08t14:04:06.956+08:00"},{"fd_station_statusstr":"在建","id":6,"fd_station_id":6,"fd_station_code":"lwz","fd_station_name":"张北六歪咀50mw","fd_address":"张北六歪咀","fd_captain":"","fd_station_capacity":50.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e114°33′","fd_dimens":"n41°23′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1307.60,"fd_irra_year":5720.04,"fd_ave_power_year":66686.41,"fd_create_time":"2016-12-08t14:04:06.956+08:00","fd_update_time":"2016-12-08t14:04:06.956+08:00"},{"fd_station_statusstr":"在建","id":7,"fd_station_id":7,"fd_station_code":"wc","fd_station_name":"河北围场20mw","fd_address":"河北围场","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e117°00′","fd_dimens":"n42°00′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1361.30,"fd_irra_year":5826.78,"fd_ave_power_year":27466.40,"fd_create_time":"2016-12-08t14:04:06.956+08:00","fd_update_time":"2016-12-08t14:04:06.956+08:00"},{"fd_station_statusstr":"在建","id":8,"fd_station_id":8,"fd_station_code":"cfi","fd_station_name":"内蒙赤峰i期20mw","fd_address":"内蒙赤峰","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e116°21′~ 120°58′","fd_dimens":"n41°17′~ 45°24′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1408.00,"fd_irra_year":5880.46,"fd_ave_power_year":28153.30,"fd_create_time":"2016-12-08t14:04:06.956+08:00","fd_update_time":"2016-12-08t14:04:06.956+08:00"},{"fd_station_statusstr":"在建","id":9,"fd_station_id":9,"fd_station_code":"xt","fd_station_name":"湖北仙桃20mw","fd_address":"湖北仙桃","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e115°11′","fd_dimens":"n36°27′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":993.27,"fd_irra_year":4763.56,"fd_ave_power_year":20226.10,"fd_create_time":"2016-12-08t14:04:06.959+08:00","fd_update_time":"2016-12-08t14:04:06.959+08:00"},{"fd_station_statusstr":"在建","id":10,"fd_station_id":10,"fd_station_code":"bz","fd_station_name":"山东滨州20mw","fd_address":"山东滨州","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"","fd_dimens":"","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1058.23,"fd_irra_year":5089.80,"fd_ave_power_year":22468.40,"fd_create_time":"2016-12-08t14:04:06.959+08:00","fd_update_time":"2016-12-08t14:04:06.959+08:00"},{"fd_station_statusstr":"在建","id":11,"fd_station_id":11,"fd_station_code":"wa","fd_station_name":"河北武安50mw","fd_address":"河北武安","fd_captain":"","fd_station_capacity":50.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e113°55′","fd_dimens":"n36°39′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1088.00,"fd_irra_year":4989.30,"fd_ave_power_year":54397.36,"fd_create_time":"2016-12-08t14:04:06.959+08:00","fd_update_time":"2016-12-08t14:04:06.959+08:00"},{"fd_station_statusstr":"在建","id":12,"fd_station_id":12,"fd_station_code":"xx","fd_station_name":"湖南攸县20mw","fd_address":"湖南攸县","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e113°24′","fd_dimens":"n27°12′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":896.40,"fd_irra_year":4285.60,"fd_ave_power_year":17954.00,"fd_create_time":"2016-12-08t14:04:06.959+08:00","fd_update_time":"2016-12-08t14:04:06.959+08:00"},{"fd_station_statusstr":"在建","id":13,"fd_station_id":13,"fd_station_code":"jzi","fd_station_name":"安徽金寨i期100mw","fd_address":"安徽金寨","fd_captain":"","fd_station_capacity":100.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e115°57′","fd_dimens":"n31°46′","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":994.00,"fd_irra_year":4486.00,"fd_ave_power_year":99436.00,"fd_create_time":"2016-12-08t14:04:06.96+08:00","fd_update_time":"2016-12-08t14:04:06.96+08:00"},{"fd_station_statusstr":"在建","id":14,"fd_station_id":14,"fd_station_code":"bt14","fd_station_name":"新疆北屯14mw","fd_address":"新疆北屯","fd_captain":"","fd_station_capacity":14.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e87.6991°","fd_dimens":"n47.2433°","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1585.17,"fd_irra_year":5400.00,"fd_ave_power_year":19809.16,"fd_create_time":"2016-12-08t14:04:06.96+08:00","fd_update_time":"2016-12-08t14:05:31.823+08:00"},{"fd_station_statusstr":"在建","id":15,"fd_station_id":15,"fd_station_code":"bt6","fd_station_name":"新疆北屯6mw","fd_address":"新疆北屯","fd_captain":"","fd_station_capacity":6.000,"fd_intercon_cap":6.000,"fd_sys_solut":"地面式","fd_longitude":"e87.6499°","fd_dimens":"n47.6194°","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1585.17,"fd_irra_year":5400.00,"fd_ave_power_year":8562.10,"fd_create_time":"2016-12-08t14:04:06.96+08:00","fd_update_time":"2016-12-08t14:05:42.835+08:00"},{"fd_station_statusstr":"在建","id":16,"fd_station_id":16,"fd_station_code":"wh","fd_station_name":"河南卫辉20mw","fd_address":"河南卫辉","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e113°57＇30.80＂","fd_dimens":"n35°30＇8.79＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1221.20,"fd_irra_year":5181.20,"fd_ave_power_year":24448.33,"fd_create_time":"2016-12-08t14:04:06.962+08:00","fd_update_time":"2016-12-08t14:04:06.962+08:00"},{"fd_station_statusstr":"在建","id":17,"fd_station_id":17,"fd_station_code":"yjz","fd_station_name":"河南杨家寨20mw","fd_address":"河南杨家寨","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e113°58＇32.2716＂","fd_dimens":"n36°14＇23.8416＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1221.20,"fd_irra_year":5181.20,"fd_ave_power_year":24448.33,"fd_create_time":"2016-12-08t14:04:06.962+08:00","fd_update_time":"2016-12-08t14:04:06.962+08:00"},{"fd_station_statusstr":"在建","id":18,"fd_station_id":18,"fd_station_code":"dyz","fd_station_name":"河南东姚镇30mw","fd_address":"河南东姚镇","fd_captain":"","fd_station_capacity":30.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e114°0＇33.57＂","fd_dimens":"n35°51＇57.9888＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1221.20,"fd_irra_year":5181.20,"fd_ave_power_year":36672.50,"fd_create_time":"2016-12-08t14:04:06.962+08:00","fd_update_time":"2016-12-08t14:04:06.962+08:00"},{"fd_station_statusstr":"在建","id":19,"fd_station_id":19,"fd_station_code":"bmx","fd_station_name":"河南北马巷30mw","fd_address":"河南北马巷","fd_captain":"","fd_station_capacity":30.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e113°48＇3＂","fd_dimens":"n35°55＇49＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1221.20,"fd_irra_year":5181.20,"fd_ave_power_year":36672.50,"fd_create_time":"2016-12-08t14:04:06.964+08:00","fd_update_time":"2016-12-08t14:04:06.964+08:00"},{"fd_station_statusstr":"在建","id":20,"fd_station_id":20,"fd_station_code":"wjs","fd_station_name":"河南武家水10mw","fd_address":"河南武家水","fd_captain":"","fd_station_capacity":10.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e113°51＇11.556＂","fd_dimens":"n36°11＇57.0444＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1221.20,"fd_irra_year":5181.20,"fd_ave_power_year":12224.17,"fd_create_time":"2016-12-08t14:04:06.964+08:00","fd_update_time":"2016-12-08t14:04:06.964+08:00"},{"fd_station_statusstr":"在建","id":21,"fd_station_id":21,"fd_station_code":"lq","fd_station_name":"浙江龙泉30mw","fd_address":"浙江龙泉","fd_captain":"","fd_station_capacity":30.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e119.21°","fd_dimens":"n28.10°","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1350.00,"fd_irra_year":4695.50,"fd_ave_power_year":28605.57,"fd_create_time":"2016-12-08t14:04:06.966+08:00","fd_update_time":"2016-12-08t14:05:54.503+08:00"},{"fd_station_statusstr":"在建","id":22,"fd_station_id":22,"fd_station_code":"xj","fd_station_name":"浙江仙居20mw","fd_address":"浙江仙居","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e120.73°","fd_dimens":"n28.87°","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1040.17,"fd_irra_year":4712.76,"fd_ave_power_year":20662.50,"fd_create_time":"2016-12-08t14:04:06.966+08:00","fd_update_time":"2016-12-08t14:05:57.975+08:00"},{"fd_station_statusstr":"在建","id":23,"fd_station_id":23,"fd_station_code":"cw","fd_station_name":"陕西长武30mw","fd_address":"陕西长武","fd_captain":"","fd_station_capacity":30.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e107°54＇47.71＂","fd_dimens":"n35°43＇21＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1252.50,"fd_irra_year":5433.50,"fd_ave_power_year":37612.38,"fd_create_time":"2016-12-08t14:04:06.966+08:00","fd_update_time":"2016-12-08t14:04:06.966+08:00"},{"fd_station_statusstr":"在建","id":24,"fd_station_id":24,"fd_station_code":"fl","fd_station_name":"湖南伏栗20mw","fd_address":"湖南伏栗","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e111°51＇57","fd_dimens":"n27°54＇20＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":852.60,"fd_irra_year":3993.42,"fd_ave_power_year":17068.77,"fd_create_time":"2016-12-08t14:04:06.967+08:00","fd_update_time":"2016-12-08t14:04:06.967+08:00"},{"fd_station_statusstr":"在建","id":25,"fd_station_id":25,"fd_station_code":"hl","fd_station_name":"湖南红联20mw","fd_address":"湖南红联","fd_captain":"","fd_station_capacity":20.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e111°51＇57","fd_dimens":"n27°54＇20＂","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":852.60,"fd_irra_year":3993.42,"fd_ave_power_year":17068.77,"fd_create_time":"2016-12-08t14:04:06.967+08:00","fd_update_time":"2016-12-08t14:04:06.967+08:00"},{"fd_station_statusstr":"在建","id":26,"fd_station_id":26,"fd_station_code":"jzii","fd_station_name":"安徽金寨ii期100mw","fd_address":"安徽金寨","fd_captain":"","fd_station_capacity":100.000,"fd_intercon_cap":0.000,"fd_sys_solut":"地面式","fd_longitude":"e31°46＇","fd_dimens":"n115°57＇","fd_start_time":"","fd_end_time":"","fd_station_status":0,"fd_is_collection":0,"fd_ave_equ_hour_year":1450.00,"fd_irra_year":4486.00,"fd_ave_power_year":108222.80,"fd_create_time":"2016-12-08t14:04:06.967+08:00","fd_update_time":"2016-12-08t14:04:06.967+08:00"}],"code":null}
+
+请求字段说明：
+stationid:电站id
+statusstr:并网、在建、未建
+返回字段说明：
+		id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+	  `fd_station_id` int(6) NOT NULL DEFAULT '0' COMMENT '电站ID',
+	  `fd_station_code` varchar(16) NOT NULL DEFAULT '' COMMENT '电站code',
+	  `fd_station_name` varchar(100) NOT NULL DEFAULT '' COMMENT '电站名称',
+	  `fd_address` varchar(100) NOT NULL DEFAULT '' COMMENT '电站地址',
+	  `fd_captain` varchar(30) NOT NULL DEFAULT '' COMMENT '站长',
+	  `fd_station_capacity` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT '电站容量(W)',
+	  `fd_intercon_cap` decimal(10,3) NOT NULL DEFAULT '0.000' COMMENT '并网容量(W)',
+	  `fd_sys_solut` varchar(16) NOT NULL DEFAULT '' COMMENT '系统方案',
+	  `fd_longitude` varchar(32) NOT NULL DEFAULT '' COMMENT '电站经度',
+	  `fd_dimens` varchar(32) NOT NULL DEFAULT '' COMMENT '电站纬度',
+	  `fd_start_time` varchar(24) NOT NULL DEFAULT '' COMMENT '电站运营开始时间',
+	  `fd_end_time` varchar(24) NOT NULL DEFAULT '' COMMENT '电站运营结束时间',
+	  `fd_station_status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '电站状态,0为在建,1为并网,2为未建',
+	  `fd_is_collection` tinyint(2) NOT NULL DEFAULT '0' COMMENT '采集标记,1为采集,0为未采集',
+	  `fd_ave_equ_hour_year` decimal(6,2) NOT NULL DEFAULT '0.00' COMMENT '年均等效利用时数(h)',
+	  `fd_irra_year` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '年辐照度(MJ/m2)',
+	  `fd_ave_power_year` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '年均理论发电量(MWh)',
+	  `fd_create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+	  `fd_update_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '更新时间',
+
+
+-----------------------------------------------------------------------------
+API名称 ：     获取电站进度列表
+APICode ：     20000007
+RequestJson： {"parameters":{},"foreEndType":2,"code":"20000007"}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_station_name":"吉林洮南22MW","fd_station_code":"TN","id":0,"fd_station_id":null,"fd_pv_area_const":100,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":100,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"宁夏灵武50MW","fd_station_code":"LW","id":0,"fd_station_id":null,"fd_pv_area_const":100,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":100,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河北围场20MW","fd_station_code":"WC","id":0,"fd_station_id":null,"fd_pv_area_const":100,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":100,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"山东莒县40MW","fd_station_code":"JX","id":0,"fd_station_id":null,"fd_pv_area_const":98,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":99,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"四川会理30MW","fd_station_code":"HL","id":0,"fd_station_id":null,"fd_pv_area_const":98,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":99,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"湖北广水I期20MW","fd_station_code":"GS","id":0,"fd_station_id":null,"fd_pv_area_const":92,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":97,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"内蒙赤峰I期20MW","fd_station_code":"CFI","id":0,"fd_station_id":null,"fd_pv_area_const":83,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":94,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"新疆北屯6MW","fd_station_code":"BT6","id":0,"fd_station_id":null,"fd_pv_area_const":80,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":93,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"张北六歪咀50MW","fd_station_code":"LWZ","id":0,"fd_station_id":null,"fd_pv_area_const":100,"fd_elec_swit_const":95,"fd_outside_const":42,"fd_total_proj_progress":79,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"新疆北屯14MW","fd_station_code":"BT14","id":0,"fd_station_id":null,"fd_pv_area_const":26,"fd_elec_swit_const":100,"fd_outside_const":100,"fd_total_proj_progress":75,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"湖北仙桃20MW","fd_station_code":"XT","id":0,"fd_station_id":null,"fd_pv_area_const":6,"fd_elec_swit_const":95,"fd_outside_const":100,"fd_total_proj_progress":67,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河北武安50MW","fd_station_code":"WA","id":0,"fd_station_id":null,"fd_pv_area_const":2,"fd_elec_swit_const":90,"fd_outside_const":48,"fd_total_proj_progress":47,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"山东滨州20MW","fd_station_code":"BZ","id":0,"fd_station_id":null,"fd_pv_area_const":82,"fd_elec_swit_const":15,"fd_outside_const":9,"fd_total_proj_progress":35,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"安徽金寨I期100MW","fd_station_code":"JZI","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":40,"fd_outside_const":50,"fd_total_proj_progress":30,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河南杨家寨20MW","fd_station_code":"YJZ","id":0,"fd_station_id":null,"fd_pv_area_const":17,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":6,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"湖南攸县20MW","fd_station_code":"XX","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河南卫辉20MW","fd_station_code":"WH","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河南东姚镇30MW","fd_station_code":"DYZ","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河南北马巷30MW","fd_station_code":"BMX","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"河南武家水10MW","fd_station_code":"WJS","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"浙江龙泉30MW","fd_station_code":"LQ","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"浙江仙居20MW","fd_station_code":"XJ","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"陕西长武30MW","fd_station_code":"CW","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"湖南伏栗20MW","fd_station_code":"FL","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"四川会理30MW","fd_station_code":"HL","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_station_name":"安徽金寨II期100MW","fd_station_code":"JZII","id":0,"fd_station_id":null,"fd_pv_area_const":0,"fd_elec_swit_const":0,"fd_outside_const":0,"fd_total_proj_progress":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"}],"code":null}
+
+字段说明：
+	fd_station_name：电站名称
+  `fd_pv_area_const` tinyint(2) NOT NULL DEFAULT '0' COMMENT '光伏区施工总进度(单位:%)',
+  `fd_elec_swit_const` tinyint(2) NOT NULL DEFAULT '0' COMMENT '开关站电气施工总进度(单位:%)',
+  `fd_outside_const` tinyint(2) NOT NULL DEFAULT '0' COMMENT '外线施工总进度(单位:%)',
+  `fd_total_proj_progress` tinyint(2) NOT NULL DEFAULT '0' COMMENT '工程总进度(单位:%)',
+  
+-----------------------------------------------------------------------------
+API名称 ：     获取发电量统计
+APICode ：     20000008
+RequestJson：{
+					"parameters": {
+						"sorttype": "1",
+						"sort": "1",
+						"starttime": "20170101000000",
+						"topn": "7",
+						"stationid": "ALL"
+					},
+					"foreEndType": 2,
+					"code": "20000008"
+				}
+ResponseJson：{"success":true,"message":"ok","data":[{"yearpower":69.68,"fd_datetime":null,"fd_station_name":"湖北广水II期20MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":44750,"fd_station_id":"GS","fd_log_date":"2017-01-18T00:00:00","fd_power_day":0.923981,"fd_power_curr":317.06,"fd_pw_curr":0.000000,"fd_radia_curr":1.842300,"update_time":"2017-01-18T17:30:00"},{"yearpower":171.01,"fd_datetime":null,"fd_station_name":"山东莒县40MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":44752,"fd_station_id":"JX","fd_log_date":"2017-01-18T00:00:00","fd_power_day":7.280029,"fd_power_curr":478.87,"fd_pw_curr":-88.271480,"fd_radia_curr":6.776903,"update_time":"2017-01-18T17:30:00"},{"yearpower":180.35,"fd_datetime":null,"fd_station_name":"四川会理30MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":44751,"fd_station_id":"HL","fd_log_date":"2017-01-18T00:00:00","fd_power_day":16.420840,"fd_power_curr":452.04,"fd_pw_curr":4776.464000,"fd_radia_curr":21.810000,"update_time":"2017-01-18T17:30:00"},{"yearpower":274.03,"fd_datetime":null,"fd_station_name":"宁夏灵武50MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":44748,"fd_station_id":"LW","fd_log_date":"2017-01-18T00:00:00","fd_power_day":18.303960,"fd_power_curr":1867.01,"fd_pw_curr":2.251040,"fd_radia_curr":17.440000,"update_time":"2017-01-18T17:30:00"}],"code":null}
+
+请求字段说明：
+						"sorttype": "1",	1：按时间排序；
+						"sort": "1",		1:降序；2:升序
+						"starttime":	"20170101000000",	开始时间:yyyyMMddHHmmss
+						"topn": "100",		取多少个
+						"stationid": ""		电站ID：为空就是所有 
+
+获取数据说明：	{
+    "success": true,
+    "message": "ok",
+    "data": [
+        {
+            "yearpower": 69.68,--当年年发电量
+            "fd_station_name": "湖北广水II期20MW",
+            "fd_power_curr_unit": "万kWh",--累积发电量单位
+            "fd_yearpower_unit": "万kWh",--年发电量单位
+            "fd_power_curr": 317.06,--累积发电量
+        },
+
+-----------------------------------------------------------------------------
+API名称 ：     电站节能减排
+APICode ：     20000009
+RequestJson：{
+					"parameters": {
+						"topn": "7",
+						"stationid": "ALL"
+					},
+					"foreEndType": 2,
+					"code": "20000009"
+				}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_safety_daycount":0,"fd_make_money":0.0,"fd_station_name":"宁夏灵武50MW","fd_all_pw":0.0,"fd_all_power":0.0,"fd_all_power_day":0.0,"fd_all_power_year":0.0,"fd_make_money_unit":null,"fd_all_pw_unit":null,"fd_all_power_unit":null,"fd_all_power_day_unit":null,"fd_all_power_year_unit":null,"fd_so2_reduce":0.56,"fd_co2_reduce":0.0,"fd_tree_reduce":0.1,"fd_coal_reduce":7.54,"fd_so2_reduce_unit":"吨","fd_co2_reduce_unit":"万吨","fd_tree_reduce_unit":"万棵","fd_coal_reduce_unit":"吨","tbpowertypes":null},{"fd_safety_daycount":0,"fd_make_money":0.0,"fd_station_name":"湖北广水II期20MW","fd_all_pw":0.0,"fd_all_power":0.0,"fd_all_power_day":0.0,"fd_all_power_year":0.0,"fd_make_money_unit":null,"fd_all_pw_unit":null,"fd_all_power_unit":null,"fd_all_power_day_unit":null,"fd_all_power_year_unit":null,"fd_so2_reduce":95.22,"fd_co2_reduce":0.32,"fd_tree_reduce":17.29,"fd_coal_reduce":1282.27,"fd_so2_reduce_unit":"吨","fd_co2_reduce_unit":"万吨","fd_tree_reduce_unit":"万棵","fd_coal_reduce_unit":"吨","tbpowertypes":null},{"fd_safety_daycount":0,"fd_make_money":0.0,"fd_station_name":"四川会理30MW","fd_all_pw":0.0,"fd_all_power":0.0,"fd_all_power_day":0.0,"fd_all_power_year":0.0,"fd_make_money_unit":null,"fd_all_pw_unit":null,"fd_all_power_unit":null,"fd_all_power_day_unit":null,"fd_all_power_year_unit":null,"fd_so2_reduce":135.96,"fd_co2_reduce":0.45,"fd_tree_reduce":24.69,"fd_coal_reduce":1830.93,"fd_so2_reduce_unit":"吨","fd_co2_reduce_unit":"万吨","fd_tree_reduce_unit":"万棵","fd_coal_reduce_unit":"吨","tbpowertypes":null},{"fd_safety_daycount":0,"fd_make_money":0.0,"fd_station_name":"山东莒县40MW","fd_all_pw":0.0,"fd_all_power":0.0,"fd_all_power_day":0.0,"fd_all_power_year":0.0,"fd_make_money_unit":null,"fd_all_pw_unit":null,"fd_all_power_unit":null,"fd_all_power_day_unit":null,"fd_all_power_year_unit":null,"fd_so2_reduce":0.14,"fd_co2_reduce":0.0,"fd_tree_reduce":0.03,"fd_coal_reduce":1.94,"fd_so2_reduce_unit":"吨","fd_co2_reduce_unit":"万吨","fd_tree_reduce_unit":"万棵","fd_coal_reduce_unit":"吨","tbpowertypes":null}],"code":null}
+
+请求字段说明：
+						"sorttype": "1",	1：按时间排序；
+						"sort": "1",		1:降序；2:升序
+						"starttime":	"20170101000000",	开始时间:yyyyMMddHHmmss
+						"topn": "100",		取多少个
+						"stationid": ""		电站ID：为空就是所有 
+
+获取数据说明：	
+		"fd_station_name":"宁夏灵武50MW"
+        "fd_all_power": 2547.99,//累积发电量
+        "fd_so2_reduce": 764.4,//二氧化硫
+        "fd_co2_reduce": 2.54,//二氧化碳
+        "fd_tree_reduce": 138.81,//等效植树
+        "fd_coal_reduce": 10293.88,//标准煤
+        "fd_so2_reduce_unit": "吨",//二氧化硫单位
+        "fd_co2_reduce_unit": "万吨",//二氧化碳单位
+        "fd_tree_reduce_unit": "万颗",//等效植树单位
+        "fd_coal_reduce_unit": "吨"//标准煤单位
+-----------------------------------------------------------------------------
+API名称 ：     获取电站展示模块数据
+APICode ：     20000010
+RequestJson：{
+					"parameters": {
+						"stationid": "gs"
+					},
+					"foreEndType": 2,
+					"code": "20000010"
+				}
+ResponseJson：{"success":true,"message":"ok","data":{"fd_city":"随州市","fd_station_desc":"电站位于广水市李店镇高平村附近空闲的荒地，场址距广水市中心约12km，距李店镇镇中心约4公里，场址坐标为N31°32.61′、E113°59.16′，海拔高度为85米。规划开发总容量为20MWp。站址地区海拔高、气候干燥，日照时间长，年日照时数为2100小时；太阳辐射强度高，年太阳辐射量可达4985 MJ/m2；太阳能资源丰富，且本站址所处地区地势平坦开阔的丘陵岗地，即非生态保护区，也非候鸟栖息地，具有很好的太阳能开发利用价值。所发电能将通过新建35kV开闭站以1回35kV线路，接入广水35kV变电站并入电网","pr":84.86,"fdwebtemperatureurl":"http://api.map.baidu.com/telematics/v3/weather?location=随州市&output=json&ak=0h08YBBvVkr746zjlN9k0ftG94oMjEgM","fdtemperature":17.077137,"fd_station_pic":["http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (1).bmp","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (1).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (1).png","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (10).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (11).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (12).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (13).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (14).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (15).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (16).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (17).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (18).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (2).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (3).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (4).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (5).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (6).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (7).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (8).jpg","http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\station\\gs_ (9).jpg"],"fd_station_sketchpic":"http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\syt\\1.JPG","fd_safety_daycount":0,"fd_make_money":0.0,"fd_station_name":"湖北广水II期20MW","fd_all_pw":12.275712013244629,"fd_all_power":347.8,"fd_all_power_day":3.65,"fd_all_power_year":0.0,"fd_make_money_unit":null,"fd_all_pw_unit":"kW","fd_all_power_unit":"万kWh","fd_all_power_day_unit":"万kWh","fd_all_power_year_unit":null,"fd_so2_reduce":104.34,"fd_co2_reduce":0.35,"fd_tree_reduce":18.95,"fd_coal_reduce":1405.12,"fd_so2_reduce_unit":"吨","fd_co2_reduce_unit":"万吨","fd_tree_reduce_unit":"万棵","fd_coal_reduce_unit":"吨","tbpowertypes":null},"code":null}
+
+请求字段说明：
+						"stationid": "gs"		电站ID
+
+获取数据说明：	
+		"fd_station_name":"宁夏灵武50MW"
+        "fd_all_power": 2547.99,//累积发电量
+        "fd_so2_reduce": 764.4,//二氧化硫
+        "fd_co2_reduce": 2.54,//二氧化碳
+        "fd_tree_reduce": 138.81,//等效植树
+        "fd_coal_reduce": 10293.88,//标准煤
+        "fd_so2_reduce_unit": "吨",//二氧化硫单位
+        "fd_co2_reduce_unit": "万吨",//二氧化碳单位
+        "fd_tree_reduce_unit": "万颗",//等效植树单位
+        "fd_coal_reduce_unit": "吨"//标准煤单位
+		//电站描述
+		"fd_station_desc":"电站位于广水市李店镇高平村附近空闲的荒地，场址距广水市中心约12km，距李店镇镇中心约4公里，场址坐标为N31°32.61′、E113°59.16′，海拔高度为85米。规划开发总容量为20MWp。站址地区海拔高、气候干燥，日照时间长，年日照时数为2100小时；太阳辐射强度高，年太阳辐射量可达4985 MJ/m2；太阳能资源丰富，且本站址所处地区地势平坦开阔的丘陵岗地，即非生态保护区，也非候鸟栖息地，具有很好的太阳能开发利用价值。所发电能将通过新建35kV开闭站以1回35kV线路，接入广水35kV变电站并入电网"
+
+        "fd_city": "随州市",
+        "pr": 85.56,	//pr
+		hour:32.33,		//等效小时
+        "fdwebtemperatureurl": "http://api.map.baidu.com/telematics/v3/weather?location=随州市&output=json&ak=0h08YBBvVkr746zjlN9k0ftG94oMjEgM",
+        "fdtemperature": 12.345809,
+        "fd_station_pic": null,//图片集合
+        "fd_station_sketchpic": "http:\\192.168.2.213:8001\\Resources\\pic\\station\\gs\\syt\\1.JPG",//电站示意图
+        "fd_safety_daycount": 0,
+        "fd_station_name": "湖北广水II期20MW",
+        "fd_all_power": 345.66,//累积发电量
+        "fd_all_power_day": 1.51,//当天发电量
+        "fd_all_power_year": 0,//当年发电量
+        "fd_all_pw_unit": "kW",//功率单位
+        "fd_all_power_unit": "万kWh",//累计发电量单位
+        "fd_all_power_day_unit": "万kWh",//当天发电量单位
+        "fd_all_power_year_unit": null,
+        "fd_so2_reduce": 103.7,//二氧化硫
+        "fd_co2_reduce": 0.34,//二氧化碳
+        "fd_tree_reduce": 18.83,//等效植树
+        "fd_coal_reduce": 1396.47,//标准煤
+        "fd_so2_reduce_unit": "吨",//二氧化硫单位
+        "fd_co2_reduce_unit": "万吨",//二氧化碳单位
+        "fd_tree_reduce_unit": "万棵",//等效植树单位
+        "fd_coal_reduce_unit": "吨",//标准煤单位
+		 "fd_all_co2_reduce": 0.78,//总二氧化碳
+        "fd_all_co2_reduce_unit": "万吨",//总
+        "fd_all_so2_reduce": 234.91,//总
+        "fd_all_so2_reduce_unit": "吨",//总
+        "fd_all_tree_reduce": 42.66,//总
+        "fd_all_tree_reduce_unit": "万棵",//总
+        "fd_all_coal_reduce": 3163.51,//总
+        "fd_all_coal_reduce_unit": "吨",//总
+        "fd_all_pw": 1.64,//功率
+        "fd_safety_daycount": 0,
+        "fd_station_name": "湖北广水II期20MW",
+        "fd_all_intercon_cap": 0,//装机容量
+        "fd_all_power_year": 0,
+        "fd_make_money": 3.06,//当天收益
+        "fd_make_money_unit": "万元",//当天累积收益单位
+        "fd_all_make_money": 352.37,//累积收益
+        "fd_all_make_money_unit": "万元",//累积收益单位
+        "tbpowertypes": null
+}
+
+-----------------------------------------------------------------------------
+API名称 ：     获取值班员信息
+APICode ：     20000011
+RequestJson：{"parameters":{},"foreEndType":2,"code":"20000011"}
+ResponseJson：{
+    "success": true,
+    "message": "ok",
+    "data": {
+        "fd_Monitor_name": "杨伟",
+        "fd_user_name": "杨伟",
+        "id": 0,
+        "fd_user_id": null,
+        "fd_level": 1,
+        "fd_rota_starttime": "2017-03-21T08:30:00+08:00",
+        "fd_rota_endtime": "2017-03-21T17:30:00+08:00",
+        "create_time": "0001-01-01T00:00:00",
+        "update_time": "0001-01-01T00:00:00"
+    },
+    "code": null
+}
+
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": {
+        "fd_Monitor_name": "杨伟",//班长
+        "fd_user_name": "杨伟",//值班员
+        "id": 0,
+        "fd_user_id": null,
+        "fd_level": 1,
+        "fd_rota_starttime": "2017-03-21T08:30:00+08:00",//开始时间
+        "fd_rota_endtime": "2017-03-21T17:30:00+08:00",//结束时间
+        "create_time": "0001-01-01T00:00:00",
+        "update_time": "0001-01-01T00:00:00"
+    },
+    "code": null
+}
+
+-----------------------------------------------------------------------------
+API名称 ：     获取告警、工单信息
+APICode ：     20000012
+RequestJson：{"parameters":{"stationid": "ALL" },"foreEndType":2,"code":"20000012"}
+ResponseJson：{"success":true,"message":"ok","data":{"fd_all_pw":0.0,"fd_safety_daycount":0,"fd_station_name":null,"fd_all_intercon_cap":0.0,"fd_all_power":0.0,"fd_all_power_day":0.0,"fd_all_power_year":0.0,"fd_make_money":0.0,"fd_make_money_unit":null,"fd_all_make_money":0.0,"fd_all_make_money_unit":null,"fd_all_pw_unit":null,"fd_all_power_unit":null,"fd_all_power_day_unit":null,"fd_all_power_year_unit":null,"fd_so2_reduce":0.0,"fd_co2_reduce":0.0,"fd_tree_reduce":0.0,"fd_coal_reduce":0.0,"fd_so2_reduce_unit":null,"fd_co2_reduce_unit":null,"fd_tree_reduce_unit":null,"fd_coal_reduce_unit":null,"tbalarmdata":[{"fd_name":"告警总数","fd_count":"0"},{"fd_name":"未处理","fd_count":"0"}],"tborderdata":[{"fd_name":"工单总数","fd_count":"0"},{"fd_name":"未处理","fd_count":"0"}],"tbpowertypes":null,"tbstationinfos":null},"code":null}
+请求字段说明：
+	"stationid": "ALL" //所有
+	"stationid": "gs"//广水
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": {
+	//告警
+	"tbalarmdata": [
+            {
+                "fd_name": "告警总数",
+                "fd_count": "0"
+            },
+            {
+                "fd_name": "未处理",
+                "fd_count": "0"
+            }
+        ],
+		//工单
+        "tborderdata": [
+            {
+                "fd_name": "工单总数",
+                "fd_count": "0"
+            },
+            {
+                "fd_name": "未处理",
+                "fd_count": "0"
+            }
+        ],
+    },
+    "code": null
+}
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------
+API名称 ：     电站设备PR
+APICode ：     30000002
+RequestJson：方阵：获取根节点PR：
+				{
+					"parameters": {
+						"ctype": "1",
+						"sorttype": "1",
+						"timetype":"0",
+						"sort": "1",
+						"starttime": "20170121000000",
+						"endtime": "20170122000000",
+						"topn": "7",
+						"stationid": "gs",
+						"devid": "",
+						"ischild": ""
+					},
+					"foreEndType": 2,
+					"code": "30000002"
+				}
+				-------
+				获取子节点PR：
+				{
+					"parameters": {
+						"ctype": "1",
+						"sorttype": "1",
+						"timetype":"0",
+						"sort": "1",
+						"starttime": "20170121000000",
+						"endtime": "20170122000000",
+						"topn": "7",
+						"stationid": "gs",
+						"devid": "GS_S3",
+						"ischild": "1"
+					},
+					"foreEndType": 2,
+					"code": "30000002"
+				}
+				--------
+				{
+					"parameters": {
+						"ctype": "3",
+						"sorttype": "1",
+						"timetype":"1",
+						"sort": "1",
+						"starttime": "20170121000000",
+						"endtime": "20170122000000",
+						"topn": "1000",
+						"stationid": "gs",
+						"devid": "",
+						"ischild": ""
+					},
+					"foreEndType": 2,
+					"code": "30000002"
+				}
+
+
+ResponseJson：{"success":true,"message":"ok","data":[{"yearpower":90.8,"fd_datetime":null,"fd_station_name":"湖北广水II期20MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":49552,"fd_station_id":"GS","fd_log_date":"2017-01-21T00:00:00","fd_power_day":7.475983,"fd_power_curr":338.18,"fd_pw_curr":0.181152,"fd_radia_curr":18.221200,"update_time":"2017-01-21T17:40:00"},{"yearpower":213.5,"fd_datetime":null,"fd_station_name":"山东莒县40MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":49554,"fd_station_id":"JX","fd_log_date":"2017-01-21T00:00:00","fd_power_day":16.660030,"fd_power_curr":521.36,"fd_pw_curr":-105.925800,"fd_radia_curr":11.534340,"update_time":"2017-01-21T17:40:00"},{"yearpower":221.67,"fd_datetime":null,"fd_station_name":"四川会理30MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":49553,"fd_station_id":"HL","fd_log_date":"2017-01-21T00:00:00","fd_power_day":14.062440,"fd_power_curr":493.36,"fd_pw_curr":4226.992000,"fd_radia_curr":21.930000,"update_time":"2017-01-21T17:40:00"},{"yearpower":341.79,"fd_datetime":null,"fd_station_name":"宁夏灵武50MW","equivalenthour":null,"pr":0.0,"fd_power_curr_unit":"万kWh","fd_yearpower_unit":"万kWh","id":49550,"fd_station_id":"LW","fd_log_date":"2017-01-21T00:00:00","fd_power_day":23.407960,"fd_power_curr":1934.77,"fd_pw_curr":2.527360,"fd_radia_curr":22.500000,"update_time":"2017-01-21T17:40:00"}],"code":null}
+
+请求字段说明：
+						"ctype": "1"		1：按设备分组	2：按设备、时间分组		3:按时间分组
+						"timetype":"0",		0：按5分钟排序；1：按小时排序
+						"sorttype": "1",	1：按时间排序；
+						"sort": "1",		1:降序；2:升序
+						"starttime":		"20170101000000",	开始时间:yyyyMMddHHmmss
+						"topn": "100",		取多少个
+						"stationid": "gs",	电站ID：为空就是所有
+						"devid": "GS_S3",	父节点ID-子阵级别
+						"ischild": "1"		是否获取子节点PR，1是；0否
+						
+
+获取数据说明：	
+			"fd_datetime": null,
+            "fd_name": "3N5",					//设备名称
+            "equivalenthour": "4.30",			//等效小时
+            "pr": 84.56,						//PR值
+            "fd_power_curr_unit": null,
+            "fd_power_unit": "万kWh",			//发电量单位
+            "id": 0,
+            "fd_dev_id": "GS_S3_3N5",			//设备ID：父节点ID
+            "fd_power": 147.64,					//发电量
+            "fd_power_curr": 0,
+            "fd_pw_curr": 0,					交流功率
+            "fd_pdc_curr": 0,					直流功率
+            "fd_radia_curr": 18.315,			//辐射量
+            "fd_pr1": 0,		 				
+            "fd_pr2": 0,
+            "fd_log_date": null,				//时间
+            "update_time": null
+			fd_pw_curr_avg		平均交流功率
+			fd_pdc_curr_avg		平均直流功率
+			fd_radia_real_avg	平均瞬时辐照
+			fd_radia_real		瞬时辐照
+
+
+-----------------------------------------------------------------------------
+API名称 ：     获取电站发电量趋势统计
+APICode ：     30000003
+RequestJson：  {
+					"parameters": {
+						"stationtype": "all",
+						"timetype": "1",
+						"sorttype": "1",
+						"sort": "1",
+						"starttime": "20170121000000",
+						"endtime": "20170123000000",
+						"topn": "7",
+						"stationid": "ALL"
+					},
+					"foreEndType": 2,
+					"code": "30000003"
+				}
+
+ResponseJson：{"success":true,"message":"ok","data":{"fd_unit":"万kWh","fd_datas":[{"yearpower":0.0,"fd_datetime":"22","fd_station_name":"ALL","equivalenthour":"110.54","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1529.90,"fd_power_curr":0.0,"fd_pw_curr":-6498.32,"fd_radia_curr":0.0,"update_time":null},{"yearpower":0.0,"fd_datetime":"21","fd_station_name":"ALL","equivalenthour":"110.54","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1529.90,"fd_power_curr":0.0,"fd_pw_curr":-6403.19,"fd_radia_curr":0.0,"update_time":null},{"yearpower":0.0,"fd_datetime":"20","fd_station_name":"ALL","equivalenthour":"110.54","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1529.90,"fd_power_curr":0.0,"fd_pw_curr":-6193.31,"fd_radia_curr":0.0,"update_time":null},{"yearpower":0.0,"fd_datetime":"19","fd_station_name":"ALL","equivalenthour":"110.53","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1529.79,"fd_power_curr":0.0,"fd_pw_curr":1069.39,"fd_radia_curr":0.0,"update_time":null},{"yearpower":0.0,"fd_datetime":"18","fd_station_name":"ALL","equivalenthour":"110.49","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1529.19,"fd_power_curr":0.0,"fd_pw_curr":30177.82,"fd_radia_curr":0.0,"update_time":null},{"yearpower":0.0,"fd_datetime":"17","fd_station_name":"ALL","equivalenthour":"108.88","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1506.91,"fd_power_curr":0.0,"fd_pw_curr":196410.01,"fd_radia_curr":0.0,"update_time":null},{"yearpower":0.0,"fd_datetime":"16","fd_station_name":"ALL","equivalenthour":"104.58","pr":0.0,"fd_power_curr_unit":null,"fd_yearpower_unit":null,"id":0,"fd_station_id":null,"fd_log_date":null,"fd_power_day":1447.44,"fd_power_curr":0.0,"fd_pw_curr":459478.55,"fd_radia_curr":0.0,"update_time":null}]},"code":null}
+
+请求字段说明：
+						"stationtype": "all",   all或者null：获取发电量all、或者单电站stationid数据；allstation：获取所有并网电站的数据
+						"timetype": "day",		day：获取天数据（5分钟密度数据）；month：获取月的数据（天密度数据）；year：获取年的数据（月密度数据）
+						"sorttype": "1",	1：按时间排序；
+						"sort": "1",		1:降序；2:升序
+						"starttime":	"20170101000000",	开始时间:yyyyMMddHHmmss
+						"endtime":		"20170109000000",	结束时间:yyyyMMddHHmmss
+						"topn": "100",		取多少个
+						"stationid": ""		电站ID：为空就是所有 
+
+
+						timetype：	//0：按5分钟排序YYYY-mm-DD HH:mm；
+									//1：按小时排序 HH
+									//2: 按天；dd
+									//3：按月；YYYY-mm
+									//4：按天；每天；YYYY-mm-DD
+									//5：按小时； 结果为YYYY-mm-DD HH
+
+获取数据说明：	fd_datetime：		时间
+				fd_station_name：	电站名称，其中ALL是所有
+				fd_power_day：		发电量
+				fd_pw_curr:			功率
+				equivalenthour:		等效小时 
+
+-----------------------------------------------------------------------------
+API名称 ：     获取电站值班员信息
+APICode ：     30000005
+RequestJson：{"parameters":{"stationid": "gs"},"foreEndType":2,"code":"30000005"}
+ResponseJson：{
+    "success": true,
+    "message": "ok",
+    "data": {
+        "fd_monitor_name": "杨伟",
+        "fd_user_name": "杨伟",
+        "id": 0,
+        "fd_user_id": null,
+        "fd_level": 1,
+        "fd_rota_starttime": "2017-03-21T08:30:00+08:00",
+        "fd_rota_endtime": "2017-03-21T17:30:00+08:00",
+        "create_time": "0001-01-01T00:00:00",
+        "update_time": "0001-01-01T00:00:00"
+    },
+    "code": null
+}
+
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": {
+        "fd_Monitor_name": "杨伟",//班长
+        "fd_user_name": "杨伟",//值班员
+        "id": 0,
+        "fd_user_id": null,
+        "fd_level": 1,
+        "fd_rota_starttime": "2017-03-21T08:30:00+08:00",//开始时间
+        "fd_rota_endtime": "2017-03-21T17:30:00+08:00",//结束时间
+        "create_time": "0001-01-01T00:00:00",
+        "update_time": "0001-01-01T00:00:00"
+    },
+    "code": null
+}
+-----------------------------------------------------------------------------
+API名称 ：     获取曲线数据列表
+APICode ：     30000006
+RequestJson：{"parameters":{"stationid": "gs"},"foreEndType":2,"code":"30000006"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"STATION"},"foreEndType":2,"code":"30000006"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"MAIN"},"foreEndType":2,"code":"30000006"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"INVERTER","fd_isdata":"0"},"foreEndType":2,"code":"30000006"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"GS_S1_1N2"},"foreEndType":2,"code":"30000006"}
+				{"parameters":{"stationid":"gs","fd_dev_id":"GS_S1","fd_isdata":"-1"},"foreEndType":2,"code":"30000006"}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_name":"电站","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":1,"fd_desc":"电站","id":0,"fd_dev_code":null,"fd_dev_id":"STATION","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"集电线路","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集电线路","id":0,"fd_dev_code":null,"fd_dev_id":"GS_GRID","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"单元","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":6,"fd_desc":"单元","id":0,"fd_dev_code":null,"fd_dev_id":"UNIT","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"逆变器","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":6,"fd_desc":"逆变器","id":0,"fd_dev_code":null,"fd_dev_id":"INVERTER","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"环境检测仪","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":11,"fd_desc":"环境检测仪","id":0,"fd_dev_code":null,"fd_dev_id":"EM","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"线路保护","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":8,"fd_desc":"线路保护","id":0,"fd_dev_code":null,"fd_dev_id":"LPD","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"电表","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":7,"fd_desc":"电表","id":0,"fd_dev_code":null,"fd_dev_id":"METER","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"变压器","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":4,"fd_desc":"变压器","id":0,"fd_dev_code":null,"fd_dev_id":"BX","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"解列装置","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":16,"fd_desc":"解列装置","id":0,"fd_dev_code":null,"fd_dev_id":"SD","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_name":"SVG","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":10,"fd_desc":"SVG","id":0,"fd_dev_code":null,"fd_dev_id":"SVG","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"}],"code":null}
+请求字段说明：
+						"stationid": "gs",   电站id
+						"fd_dev_id":""设备id
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": [{
+         "fd_name": "电站",//名称
+            "fd_dev_id": "STATION",//设备id
+            "fd_code": "0",//点名
+            "fd_tablename": "tb_dev_relation",//表名
+            "fd_isdata": 0,//是否是数据 0不是 1是
+            "fd_dev_class_id": 1,//类型
+            "fd_desc": "电站",//描述
+            "fd_model_id": 0,//型号
+    }],
+    "code": null
+}
+
+-----------------------------------------------------------------------------
+API名称 ：     获取曲线数据
+APICode ：     30000007
+RequestJson：
+{
+    "parameters": {
+        "fd_dev_id": "kaka",
+        "fd_parent_id": "GS_304",
+        "fd_code": "GS_C1_YC1",
+        "fd_tablename": "tb_data_stat_yc",
+        "fd_isdata": 1,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000007"
+}
+
+{
+    "parameters": {
+        "fd_dev_id": "kaka",
+        "fd_parent_id": "GS_304",
+        "fd_code": "station_pr",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000007"
+}
+{
+    "parameters": {
+        "fd_dev_id": "GS_304",
+        "fd_parent_id": "GS_304",
+        "fd_code": "grid_power",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000007"
+}
+
+ResponseJson：{"success":true,"message":"ok","data":{"fd_station_name":"湖北广水II期20MW","fd_name":"35KV集一回线孚304","fd_code_name":"1母线 Ua","data":[{"fd_name":"GS_C1_YC1","fd_value":"21.661380","fd_datetime":"2017-03-01 05"},{"fd_name":"GS_C1_YC1","fd_value":"21.644630","fd_datetime":"2017-03-01 06"},{"fd_name":"GS_C1_YC1","fd_value":"21.528080","fd_datetime":"2017-03-01 07"},{"fd_name":"GS_C1_YC1","fd_value":"21.360940","fd_datetime":"2017-03-01 08"},{"fd_name":"GS_C1_YC1","fd_value":"21.458350","fd_datetime":"2017-03-01 09"},{"fd_name":"GS_C1_YC1","fd_value":"21.559860","fd_datetime":"2017-03-01 10"},{"fd_name":"GS_C1_YC1","fd_value":"21.486030","fd_datetime":"2017-03-01 11"}]},"code":null}
+请求字段说明：
+    "parameters": {
+        "fd_dev_id": "kaka",//设备id
+        "fd_parent_id": "GS_304",
+        "fd_code": "GS_C1_YC1",//点名
+        "fd_tablename": "tb_data_stat_yc",//表名
+        "fd_isdata": 1,//是否是数据 0不是 1是 2自定义参数
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs" //电站id
+		timetype：	//0：按5分钟排序YYYY-mm-DD HH:mm；
+					//8：按15分钟；YYYY-mm-DD HH:mm
+					//5：按天小时； 结果为YYYY-mm-DD HH
+					//4：按天；每天；YYYY-mm-DD
+					//3：按月；YYYY-mm
+					//1：按小时时段 HH
+					//2: 按天时段；dd
+					//7：按年；Y
+}
+获取数据说明：
+		"fd_station_name": "湖北广水II期20MW",//电站名称
+        "fd_name": "35KV集一回线孚304",//对象名
+        "fd_code_name": "1母线 Ua",//点名
+        "data": [
+            {
+                "fd_name": "GS_C1_YC1",//点名
+                "fd_value": "21.661380",//值
+                "fd_datetime": "2017-03-01 05"//时间
+            },
+			
+-----------------------------------------------------------------------------
+API名称 ：     获取曲线数据分页
+APICode ：     30000008
+RequestJson：
+{
+    "parameters": {
+        "fd_page_index": "1",
+        "fd_page_size": "10",
+        "orderbyname": "1",
+        "orderbytype": "1",
+        "fd_dev_id": "kaka",
+        "fd_parent_id": "GS_304",
+        "fd_code": "GS_C1_YC1",
+        "fd_tablename": "tb_data_stat_yc",
+        "fd_isdata": 1,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000008"
+}
+
+{
+    "parameters": {
+        "fd_page_index": "1",
+        "fd_page_size": "10",
+        "orderbyname": "1",
+        "orderbytype": "1",
+        "fd_dev_id": "kaka",
+        "fd_parent_id": "GS_304",
+        "fd_code": "station_pr",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000008"
+}
+{
+    "parameters": {
+        "fd_page_index": "1",
+        "fd_page_size": "10",
+        "orderbyname": "1",
+        "orderbytype": "1",
+        "fd_dev_id": "GS_304",
+        "fd_parent_id": "GS_304",
+        "fd_code": "grid_power",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000008"
+}
+
+ResponseJson：{"success":true,"message":"ok","data":{"fd_station_name":"湖北广水II期20MW","fd_name":"35KV集一回线孚304","fd_code_name":"1母线 Ua","data":[{"fd_name":"GS_C1_YC1","fd_value":"21.661380","fd_datetime":"2017-03-01 05"},{"fd_name":"GS_C1_YC1","fd_value":"21.644630","fd_datetime":"2017-03-01 06"},{"fd_name":"GS_C1_YC1","fd_value":"21.528080","fd_datetime":"2017-03-01 07"},{"fd_name":"GS_C1_YC1","fd_value":"21.360940","fd_datetime":"2017-03-01 08"},{"fd_name":"GS_C1_YC1","fd_value":"21.458350","fd_datetime":"2017-03-01 09"},{"fd_name":"GS_C1_YC1","fd_value":"21.559860","fd_datetime":"2017-03-01 10"},{"fd_name":"GS_C1_YC1","fd_value":"21.486030","fd_datetime":"2017-03-01 11"}]},"code":null}
+请求字段说明：
+    "parameters": {
+		fd_page_index;//第几页
+		fd_page_size;//每页取多少
+		orderbyname;//1 时间 2 数据
+		orderbytype;//1 降序 2 升序
+        "fd_dev_id": "kaka",//设备id
+        "fd_parent_id": "GS_304",
+        "fd_code": "GS_C1_YC1",//点名
+        "fd_tablename": "tb_data_stat_yc",//表名
+        "fd_isdata": 1,//是否是数据 0不是 1是 2自定义参数
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs" //电站id
+		timetype：	//0：按5分钟排序YYYY-mm-DD HH:mm；
+					//8：按15分钟；YYYY-mm-DD HH:mm
+					//5：按天小时； 结果为YYYY-mm-DD HH
+					//4：按天；每天；YYYY-mm-DD
+					//3：按月；YYYY-mm
+					//1：按小时时段 HH
+					//2: 按天时段；dd
+					//7：按年；Y
+}
+获取数据说明：
+			"fdpagecount": 287,//总页数
+		"fd_station_name": "湖北广水II期20MW",//电站名称
+        "fd_name": "35KV集一回线孚304",//对象名
+        "fd_code_name": "1母线 Ua",//点名
+        "data": [
+            {
+                "fd_name": "GS_C1_YC1",//点名
+                "fd_value": "21.661380",//值
+                "fd_datetime": "2017-03-01 05"//时间
+            },
+
+-----------------------------------------------------------------------------
+API名称 ：     获取KPI曲线数据datatable
+APICode ：     30000010
+RequestJson：
+			{
+    "parameters": {
+        "fd_dev_id": "kaka",
+        "fd_parent_id": "GS_304",
+        "fd_code": "station_pr",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000010"
+}
+
+//--站端
+
+{
+    "parameters": {
+        "fd_dev_id": "GS_S1",
+        "fd_parent_id": "GS_304",
+        "fd_code": "dev_pr",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000010"
+}
+//grid_power grid_hour 
+{
+    "parameters": {
+        "fd_dev_id": "GS_304",
+        "fd_parent_id": "GS_304",
+        "fd_code": "grid_pr",
+        "fd_tablename": "1233333",
+        "fd_isdata": 2,
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs"
+    },
+    "foreEndType": 2,
+    "code": "30000010"
+}
+ResponseJson：{"success":true,"message":"ok","data":{"fd_station_name":null,"fd_name":null,"fd_code_name":null,"data":null,"tabledata":[{"fd_name":"GS","fd_datetime":"2017-03-01 08","fd_value":"260.95"},{"fd_name":"GS","fd_datetime":"2017-03-01 09","fd_value":"760.94"},{"fd_name":"GS","fd_datetime":"2017-03-01 10","fd_value":"1,795.11"},{"fd_name":"GS","fd_datetime":"2017-03-01 11","fd_value":"418.15"},{"fd_name":"GS","fd_datetime":"2017-03-01 12","fd_value":"172.02"},{"fd_name":"GS","fd_datetime":"2017-03-01 13","fd_value":"124.97"},{"fd_name":"GS","fd_datetime":"2017-03-01 14","fd_value":"118.34"}]},"code":null}
+请求字段说明：
+    "parameters": {
+        "fd_dev_id": "kaka",//设备id
+        "fd_parent_id": "GS_304",
+        "fd_code": "GS_C1_YC1",//点名
+        "fd_tablename": "tb_data_stat_yc",//表名
+        "fd_isdata": 1,//是否是数据 0不是 1是 2自定义参数
+        "timetype": "5",
+        "sorttype": "1",
+        "sort": "2",
+        "starttime": "20170301000000",
+        "endtime": "20170504000000",
+        "topn": "7",
+        "stationid": "gs" //电站id
+		timetype：	//0：按5分钟排序YYYY-mm-DD HH:mm；
+					//8：按15分钟；YYYY-mm-DD HH:mm
+					//5：按天小时； 结果为YYYY-mm-DD HH
+					//4：按天；每天；YYYY-mm-DD
+					//3：按月；YYYY-mm
+					//1：按小时时段 HH
+					//2: 按天时段；dd
+					//7：按年；Y
+}
+获取数据说明：
+		"fd_station_name": "湖北广水II期20MW",//电站名称
+        "fd_name": "35KV集一回线孚304",//对象名
+        "fd_code_name": "1母线 Ua",//点名
+        "tabledata": [
+            {
+                "名称": "GS",//电站、设备名称
+                "时间": "2017-03-01 08:20:00",//时间
+                "PR值": "260.95"//PR值 数值
+                "累积辐照": "26"//累积辐照
+            },
+-----------------------------------------------------------------------------
+API名称 ：     获取告警数据列表
+APICode ：     30000021
+RequestJson：{"parameters":{"stationid": "gs"},"foreEndType":2,"code":"30000021"}
+				{"parameters":{"stationid":"gs","fd_dev_id":"GS_S1"},"foreEndType":2,"code":"30000021"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"STATION"},"foreEndType":2,"code":"30000021"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"MAIN"},"foreEndType":2,"code":"30000021"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"INVERTER","fd_isdata":"0"},"foreEndType":2,"code":"30000021"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"GS_S1_1N2"},"foreEndType":2,"code":"30000021"}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_parent_id":null,"fd_name":"电站","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":1,"fd_desc":"电站","id":0,"fd_dev_code":null,"fd_dev_id":"STATION","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"集电线路","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集电线路","id":0,"fd_dev_code":null,"fd_dev_id":"GS_GRID","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"单元","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":6,"fd_desc":"单元","id":0,"fd_dev_code":null,"fd_dev_id":"UNIT","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"select fd_dev_id,fd_dev_type_id fd_dev_class_id,fd_dev_parent_id, fd_dev_desc fd_desc,fd_dev_name fd_name,0 fd_code, 'tb_dev_relation' fd_tablename,-1 fd_isdata,fd_dev_sql from tb_dev_relation where fd_dev_enable=1 AND fd_dev_parent_id='UNIT' ","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"逆变器","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":6,"fd_desc":"逆变器","id":0,"fd_dev_code":null,"fd_dev_id":"INVERTER","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"select fd_dev_id,fd_dev_type_id fd_dev_class_id,fd_dev_parent_id, fd_dev_desc fd_desc,fd_dev_name fd_name,0 fd_code, 'tb_dev_relation' fd_tablename,0 fd_isdata,fd_dev_sql from tb_dev_relation where fd_dev_enable=1 AND fd_dev_level=2 and fd_dev_type_id=6","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"环境检测仪","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":11,"fd_desc":"环境检测仪","id":0,"fd_dev_code":null,"fd_dev_id":"EM","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"其他间隔","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":8,"fd_desc":"其他间隔","id":0,"fd_dev_code":null,"fd_dev_id":"LPD","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"电表","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":7,"fd_desc":"电表","id":0,"fd_dev_code":null,"fd_dev_id":"METER","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"变压器","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":4,"fd_desc":"变压器","id":0,"fd_dev_code":null,"fd_dev_id":"BX","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"SVG","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":10,"fd_desc":"SVG","id":0,"fd_dev_code":null,"fd_dev_id":"SVG","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":"","fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"数采","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":5,"fd_desc":"数采","id":0,"fd_dev_code":null,"fd_dev_id":"GS_S_DATA","fd_dev_parent_id":"0","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"}],"code":null}
+
+请求字段说明：
+						"stationid": "gs",   电站id
+						"fd_dev_id":""设备id
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": [{
+         "fd_name": "电站",//名称
+            "fd_dev_id": "STATION",//设备id
+            "fd_code": "0",//点名
+            "fd_tablename": "tb_dev_relation",//表名
+            "fd_isdata": 0,//是否是数据 0不是 1是
+            "fd_dev_class_id": 1,//类型
+            "fd_desc": "电站",//描述
+            "fd_model_id": 0,//型号
+    }],
+    "code": null
+}
+
+
+-----------------------------------------------------------------------------
+API名称 ：     获取告警数据
+APICode ：     30000022
+RequestJson：{"parameters":{"stationid": "gs"},"foreEndType":2,"code":"30000022"}
+
+ResponseJson：{"success":true,"message":"ok","data":{"fdpagecount":287.0,"fddatacount":2868,"fddatas":[{"fd_alarm_type_str":"普通遥信","fd_alarm_level_str":"一般","fd_dev_parent_name":"BX","fd_dev_name":"GS_S13_BX","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T08:07:29","fd_dev_id":"GS_S13_BX","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T08:07:29","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S2","fd_dev_name":"2N1","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T07:21:32","fd_dev_id":"GS_S2_2N1","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T07:21:32","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"普通遥信","fd_alarm_level_str":"一般","fd_dev_parent_name":"BX","fd_dev_name":"GS_S6_BX","fd_alarm_state_str":"正常关闭","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T07:21:32","fd_dev_id":"GS_S6_BX","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T07:21:32","fd_end_date":"2017-04-07T08:07:29","fd_state":2,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S18","fd_dev_name":"18N2","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S18_18N2","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S18","fd_dev_name":"18N6","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S18_18N6","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S3","fd_dev_name":"3N21","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S3_3N21","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S7","fd_dev_name":"7N7","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S7_7N7","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S9","fd_dev_name":"9N15","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S9_9N15","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S4","fd_dev_name":"4N17","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S4_4N17","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"},{"fd_alarm_type_str":"位置信号","fd_alarm_level_str":"一般","fd_dev_parent_name":"GS_S11","fd_dev_name":"11N1","fd_alarm_state_str":"产生告警","fd_order_state_str":"未确认","id":0,"fd_alarm_code":null,"fd_log_date":"2017-04-07T06:28:52","fd_dev_id":"GS_S11_11N1","fd_job_code":null,"fd_setting_code":null,"fd_fault_code":null,"fd_tag_name":null,"fd_firstvalue":1.000000,"fd_lastvalue":0.000000,"fd_start_date":"2017-04-07T06:28:52","fd_end_date":null,"fd_state":1,"fd_create_time":"0001-01-01T00:00:00","fd_update_time":"0001-01-01T00:00:00"}]},"code":null}
+
+请求字段说明：
+						"stationid": "gs",   电站id
+						"fd_dev_id":""设备id
+						//`fd_level`  级别：1、事件；2、告警；3、位置信号；4、普通遥信',
+						页数 fd_page_index = obj.parameters.fd_page_index;
+						数据条数 fd_page_size = obj.parameters.fd_page_size;
+						fd_alarm_code//故障code 模糊
+						fd_alarm_name//故障名称 模糊
+						fd_alarm_level//'级别：0：普通事件；1、普通；2、高报；3、高高报；'
+						fd_alarm_state//1 产生告警,2 正常关闭,3 手动关闭
+						fd_order_state//'ORDER状态,0未确认,1待处理，2，已解决，3已关闭',
+获取数据说明：
+						 "fdpagecount": 287,//总页数
+        "fddatacount": 2868,//数据总数量
+        "fddatas": [
+            {
+				"fd_alarm_type_str": "位置信号",//故障类型
+                "fd_alarm_level_str": "一般",//故障级别
+                "fd_dev_parent_name": "GS_S2",//间隔
+                "fd_dev_name": "2N1",//设备名称
+                "fd_alarm_state_str": "产生告警",//告警状态
+                "fd_order_state_str": "未确认",//未关闭
+                "id": 0,
+                "fd_alarm_code": "ALL_GS_S2_2N1_NB5023_611_20172107072132",//产生时间
+                "fd_log_date": "2017-04-07T07:21:32",//设备id
+                "fd_dev_id": "GS_S2_2N1",//devid
+                "fd_job_code": "all",
+                "fd_setting_code": "GS_S2_2N1_NB5023_611",//设置id
+                "fd_fault_code": "NB5023",//故障码
+                "fd_tag_name": null,
+                "fd_firstvalue": 1,//产生告警的数据值
+                "fd_lastvalue": 0,//关闭告警 数据值 配合fd_end_date使用 fd_end_date不为null时候使用
+                "fd_start_date": "2017-04-07T07:21:32",//故障开始时间
+                "fd_end_date": null,//故障结束时间
+                "fd_state": 1,
+                "fd_create_time": "0001-01-01T00:00:00",
+                "fd_update_time": "0001-01-01T00:00:00"
+            },
+
+
+			 "fdleveldatas": [
+            {
+                "key": "事件",
+                "data": "0"
+            },
+            {
+                "key": "告警",
+                "data": "394"
+            },
+            {
+                "key": "位置信号",
+                "data": "21863"
+            },
+            {
+                "key": "普通遥信",
+                "data": "76"
+            }
+-----------------------------------------------------------------------------
+API名称 ：     设置告警数据
+APICode ：     30000023
+RequestJson：{"parameters":{"stationid": "gs","fd_alarm_code": "123",},"foreEndType":2,"code":"30000023"}
+
+ResponseJson：{"success":true,"message":"ok","data":"true","code":null}
+
+请求字段说明：
+						"stationid": "gs",   电站id
+						fd_alarm_code//故障code 多个用 , 隔开
+						fd_alarm_state//1 产生告警,2 正常关闭,3 手动关闭
+						fd_order_state//'ORDER状态,0未确认,1待处理，2，已解决，3已关闭',
+获取数据说明：
+
+
+-----------------------------------------------------------------------------
+API名称 ：     获取一次接线图数据
+APICode ：     30000031
+RequestJson：{"parameters":{"stationid": "gs"},"foreEndType":2,"code":"30000031"}
+
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_value":0.0,"id":17201,"fd_name":"广水现场 设备 广水 四方数采1# 全站事故总","fd_dev_id":"","fd_kpi_code":"GS_C1_YC92","fd_html_type":2,"fd_html_id":"GS_C1_YC92","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"广水现场 设备 广水 四方数采1# 全站事故总","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:35:32.017+08:00","update_time":"2017-04-13T08:35:32.017+08:00"},{"fd_value":0.0,"id":17202,"fd_name":"1母线 Ua","fd_dev_id":"","fd_kpi_code":"GS_C1_YC1","fd_html_type":2,"fd_html_id":"GS_C1_YC1","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:36:48.757+08:00","update_time":"2017-04-13T08:40:10.886+08:00"},{"fd_value":0.0,"id":17203,"fd_name":"1母线 Ub","fd_dev_id":"","fd_kpi_code":"GS_C1_YC2","fd_html_type":2,"fd_html_id":"GS_C1_YC2","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:36:49.416+08:00","update_time":"2017-04-13T08:40:12.742+08:00"},{"fd_value":0.0,"id":17204,"fd_name":"1母线 Uc","fd_dev_id":"","fd_kpi_code":"GS_C1_YC3","fd_html_type":2,"fd_html_id":"GS_C1_YC3","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:37:05.357+08:00","update_time":"2017-04-13T08:40:14.742+08:00"},{"fd_value":0.0,"id":17205,"fd_name":"1母线 Uab","fd_dev_id":"","fd_kpi_code":"GS_C1_YC4","fd_html_type":2,"fd_html_id":"GS_C1_YC4","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:37:15.854+08:00","update_time":"2017-04-13T08:40:16.598+08:00"},{"fd_value":0.0,"id":17206,"fd_name":"1母线 Ubc","fd_dev_id":"","fd_kpi_code":"GS_C1_YC5","fd_html_type":2,"fd_html_id":"GS_C1_YC5","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:37:20.502+08:00","update_time":"2017-04-13T08:40:18.614+08:00"},{"fd_value":0.0,"id":17207,"fd_name":"1母线 Uca","fd_dev_id":"","fd_kpi_code":"GS_C1_YC6","fd_html_type":2,"fd_html_id":"GS_C1_YC6","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:37:25.925+08:00","update_time":"2017-04-13T08:40:21.145+08:00"},{"fd_value":0.0,"id":17208,"fd_name":"1母线 F","fd_dev_id":"","fd_kpi_code":"GS_C1_YC8","fd_html_type":2,"fd_html_id":"GS_C1_YC8","fd_html_ids":null,"fd_isdata":3,"fd_kpi_dev_id":-1,"fd_kpi_level":-1,"fd_k":1.000000,"fd_c":0.000000,"fd_desc":"","fd_sql":"","fd_isenable":1,"create_time":"2017-04-13T08:39:40.541+08:00","update_time":"2017-04-13T08:40:24.292+08:00"}],"code":null}
+
+请求字段说明：
+						"stationid": "gs",   电站id
+获取数据说明：
+			"fd_value": 0,//数值
+            "fd_html_id": "GS_C1_YC92",//页面控件id
+            "fd_html_type": 2,//控件类型 1:bool类型,2:数值类型,3:枚举类型
+            "fd_html_ids": null,//控件集合
+            "id": 17201,
+            "fd_name": "广水现场 设备 广水 四方数采1# 全站事故总",
+            "fd_dev_id": "",
+            "fd_kpi_code": "GS_C1_YC92",
+            "fd_isdata": 3,
+            "fd_kpi_dev_id": -1,
+            "fd_kpi_level": -1,
+            "fd_k": 1,
+            "fd_c": 0,
+            "fd_desc": "广水现场 设备 广水 四方数采1# 全站事故总",
+            "fd_sql": "",
+            "fd_isenable": 1,
+            "create_time": "2017-04-13T08:35:32.017+08:00",
+            "update_time": "2017-04-13T08:35:32.017+08:00"
+
+-----------------------------------------------------------------------------
+API名称 ：     获取逆变器分析列表
+APICode ：     30000041
+RequestJson：{"parameters":{"stationid": "gs"},"foreEndType":2,"code":"30000041"}
+				{"parameters":{"stationid":"gs","fd_dev_id":"GS_304"},"foreEndType":2,"code":"30000041"}
+				{"parameters":{"stationid": "gs",'fd_dev_id':"GS_S1",'fd_dev_class_id':"2"},"foreEndType":2,"code":"30000041"}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_parent_id":null,"fd_name":"集一回线孚304","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集一回线孚304","id":0,"fd_dev_code":null,"fd_dev_id":"GS_304","fd_dev_parent_id":"GRID","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"集一回线孚305","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集一回线孚305","id":0,"fd_dev_code":null,"fd_dev_id":"GS_305","fd_dev_parent_id":"GRID","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"集一回线孚306","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集一回线孚306","id":0,"fd_dev_code":null,"fd_dev_id":"GS_306","fd_dev_parent_id":"GRID","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":0,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"}],"code":null}
+{"success":true,"message":"ok","data":[{"fd_parent_id":null,"fd_name":"集一回线孚304","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集一回线孚304","id":0,"fd_dev_code":null,"fd_dev_id":"GS_304","fd_dev_parent_id":"GRID","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":2,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"集一回线孚305","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集一回线孚305","id":0,"fd_dev_code":null,"fd_dev_id":"GS_305","fd_dev_parent_id":"GRID","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":2,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"},{"fd_parent_id":null,"fd_name":"集一回线孚306","fd_code":"0","fd_tablename":"tb_dev_relation","fd_isdata":0,"fd_dev_class_id":2,"fd_desc":"集一回线孚306","id":0,"fd_dev_code":null,"fd_dev_id":"GS_306","fd_dev_parent_id":"GRID","fd_dev_path":null,"fd_dev_name":null,"fd_model_id":0,"fd_dev_type_id":null,"fd_dev_desc":null,"fd_dev_sql":null,"fd_dev_level":2,"fd_dev_index":0,"fd_isdisplay":0,"fd_dev_enable":0,"create_time":"0001-01-01T00:00:00","update_time":"0001-01-01T00:00:00"}],"code":null}
+请求字段说明：
+						"stationid": "gs",   电站id
+						"fd_dev_id":""设备id
+						"fd_dev_class_id": "2",//设备类型 //获取逆变器时候会用！ 2是子阵 6是逆变器
+
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": [{
+         "fd_name": "电站",//名称
+            "fd_dev_id": "GS_304",//设备id
+            "fd_dev_class_id": "2",//设备类型 //获取逆变器时候会用！ 2是子阵 6是逆变器
+            "fd_code": "0",//点名
+            "fd_tablename": "tb_dev_relation",//表名
+            "fd_isdata": 0,//是否是数据 0不是 1是
+            "fd_dev_class_id": 1,//类型
+            "fd_desc": "电站",//描述
+            "fd_model_id": 0,//型号
+    }],
+    "code": null
+}
+
+
+--------------------------------------------------------------------------------
+
+API名称 ：     获取逆变器分析数据
+APICode ：     30000042
+RequestJson：{
+					"parameters": {
+						"ctype": "2",
+						"sorttype": "1",
+						"timetype":"2",
+						"sort": "1",
+						"starttime": "20170321000000",
+						"endtime": "20170322000000",
+						"topn": "700",
+						"stationid": "gs",
+						"devid": "",
+						"ischild": ""
+					},
+					"foreEndType": 2,
+					"code": "30000042"
+				}
+				//获取子阵数据
+				{
+					"parameters": {
+						"ctype": "2",
+						"sorttype": "1",
+						"timetype":"2",
+						"sort": "1",
+						"starttime": "20170321000000",
+						"endtime": "20170322000000",
+						"topn": "700",
+						"fd_dev_class_id": "2",
+						"stationid": "gs",
+						"devid": "GS_304,GS_305",
+						"ischild": ""
+					},
+					"foreEndType": 2,
+					"code": "30000042"
+				}
+				//获取逆变器数据
+				{
+					"parameters": {
+						"ctype": "2",
+						"sorttype": "1",
+						"timetype":"2",
+						"sort": "1",
+						"starttime": "20170321000000",
+						"endtime": "20170322000000",
+						"topn": "700",
+						"fd_dev_class_id": "6",
+						"stationid": "gs",
+						"fd_dev_id": "GS_304,GS_305",
+						"ischild": ""
+					},
+					"foreEndType": 2,
+					"code": "30000042"
+				}
+ResponseJson：{"success":true,"message":"ok","data":[{"fd_intercon_cap":995.280,"fd_power_one":3.71,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"13号方阵","equivalenthour":"3.71","pr":83.39,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S13","fd_power":3694.163000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.79,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"14号方阵","equivalenthour":"3.79","pr":85.09,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S14","fd_power":3769.502000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.80,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"15号方阵","equivalenthour":"3.80","pr":85.27,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S15","fd_power":3777.359000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":1029.600,"fd_power_one":3.84,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"9号方阵","equivalenthour":"3.84","pr":86.17,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S9","fd_power":3948.952000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.85,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"10号方阵","equivalenthour":"3.85","pr":86.41,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S10","fd_power":3827.839000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.90,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"12号方阵","equivalenthour":"3.90","pr":87.68,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S12","fd_power":3884.291000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.90,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"7号方阵","equivalenthour":"3.90","pr":87.72,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0400000000,"fd_pw_curr_avg":0.0380000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S7","fd_power":3885.889000,"fd_power_curr":0.0,"fd_pw_curr":0.038000,"fd_pdc_curr":0.040000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.91,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"8号方阵","equivalenthour":"3.91","pr":87.89,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S8","fd_power":3893.667000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.93,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"4号方阵","equivalenthour":"3.93","pr":88.25,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S4","fd_power":3909.666000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.93,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"11号方阵","equivalenthour":"3.93","pr":88.32,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S11","fd_power":3912.569000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":1029.600,"fd_power_one":3.94,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"5号方阵","equivalenthour":"3.94","pr":88.42,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S5","fd_power":4052.094000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.94,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"6号方阵","equivalenthour":"3.94","pr":88.60,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0020000000,"fd_pw_curr_avg":0.0020000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S6","fd_power":3924.819000,"fd_power_curr":0.0,"fd_pw_curr":0.002000,"fd_pdc_curr":0.002000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.96,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"3号方阵","equivalenthour":"3.96","pr":88.93,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S3","fd_power":3939.841000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.96,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"17号方阵","equivalenthour":"3.96","pr":88.98,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S17","fd_power":3941.734000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":3.97,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"18号方阵","equivalenthour":"3.97","pr":89.19,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S18","fd_power":3951.169000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":377.520,"fd_power_one":3.97,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"19号方阵","equivalenthour":"3.97","pr":89.22,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S19","fd_power":1499.230000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":4.00,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"2号方阵","equivalenthour":"4.00","pr":89.82,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S2","fd_power":3979.134000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":995.280,"fd_power_one":4.00,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"16号方阵","equivalenthour":"4.00","pr":89.94,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S16","fd_power":3984.540000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null},{"fd_intercon_cap":1029.600,"fd_power_one":4.06,"fd_pw_curr_one":0.00,"fd_pdc_curr_one":0.00,"fd_datetime":"21","fd_name":"1号方阵","equivalenthour":"4.06","pr":90.0,"fd_power_curr_unit":null,"fd_power_unit":null,"fd_power_curr_avg":null,"fd_pdc_curr_avg":0.0000000000,"fd_pw_curr_avg":0.0000000000,"fd_radia_real_avg":0.0,"fd_pr1":0.0,"fd_pr2":0.0,"id":0,"fd_dev_id":"GS_S1","fd_power":4182.834000,"fd_power_curr":0.0,"fd_pw_curr":0.000000,"fd_pdc_curr":0.000000,"fd_radia_curr":16.023800,"fd_radia_real":0.0,"fd_log_date":null}],"code":null}
+请求字段说明：
+fd_dev_level:1	1:逆变器单元	2：
+						"ctype": "2"		1：按设备分组	2：按设备、时间分组		3:按时间分组
+						"sorttype": "1",
+						"timetype":"2",
+						"sort": "1",
+						"starttime": "20170321000000",
+						"endtime": "20170322000000",
+						"topn": "700",
+						"stationid": "gs",//电站id
+						"devid": "",
+						"ischild": "1"		是否获取子节点PR，1是；0否"
+		timetype：	//0：按5分钟排序YYYY-mm-DD HH:mm；
+					//8：按15分钟；YYYY-mm-DD HH:mm
+					//5：按天小时； 结果为YYYY-mm-DD HH
+					//4：按天；每天；YYYY-mm-DD
+					//3：按月；YYYY-mm
+					//1：按小时时段 HH
+					//2: 按天时段；dd
+					//7：按年；Y
+						页数 fd_page_index = obj.parameters.fd_page_index;
+						数据条数 fd_page_size = obj.parameters.fd_page_size;
+						"fd_dev_class_id": "2",//2是子阵 //6是逆变器
+获取数据说明：
+						{
+    "success": true,
+    "message": "ok",
+    "data": [{
+			"fdpagecount": 287,//总页数
+
+
+          "fd_intercon_cap":995.28,//装机容量
+            "fd_power_one":3.71,//归一化日发电量
+            "fd_pw_curr_one":0,//归一化功率
+            "fd_pdc_curr_one":0,//归一化交流功率
+            "fd_datetime":"21",//时间
+            "fd_name":"13号方阵",//名称
+            "equivalenthour":"3.71",//等效小时
+            "pr":83.39,//pr
+            "fd_power_curr_unit":null,
+            "fd_power_unit":null,
+            "fd_power_curr_avg":null,
+            "fd_pdc_curr_avg":0,//交流功率平均值
+            "fd_pw_curr_avg":0,//直流功率平均值
+            "fd_radia_real_avg":0,//瞬时辐照平均值
+            "fd_dev_id":"GS_S13",//设备id
+            "fd_power":3694.163,//发电量
+            "fd_power_curr":0,
+            "fd_pw_curr":0,//直流功率
+            "fd_pdc_curr":0,//交流功率
+            "fd_radia_curr":16.0238,//累积辐照
+            "fd_radia_real":0,//瞬时辐照
+            "fd_log_date":null
+    }],
+    "code": null
+}
+
+
+

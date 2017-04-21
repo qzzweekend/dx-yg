@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据曲线</title>
+    <link rel="stylesheet" href="../jsp/plugin/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/asyncbox/skins/default.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/zoom-detect.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/style_blue.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/index.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/jquery-autocomplete/jquery.autocomplete.css">
+    <link rel="stylesheet" href="../jsp/plugin/JQueryzTree/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="../jsp/plugin/jquery-select/css/select2.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/jquery.minicolors.css"/>
+    <link rel="stylesheet" href="../jsp/portal/resource/css/style_2.0_blue.css"/>
+</head>
+<body>
+<div id="dataCurve" style="height: 100%;">
+
+    <form id="redirectForm" action="stationPicAction_showPointMessage" target="_blank" method="post">
+        <input type="hidden" id="psKey" name="psKey" value="">
+        <input type="hidden" id="uuid" name="uuid" value="">
+        <input type="hidden" id="powerStationId" name="psId" value="">
+    </form>
+    <input type="hidden" id="selectPsId" value="108816">
+    <input type="hidden" id="curPage" value="1">
+
+    <!--------首页右下content-------->
+    <div id="map_wap_div" class="map_wap">
+        <div class="map_select clearfix single_no_show">
+            <div class="map_select clearfix">
+                <div class="map_select_wrap fl" style="height: auto;">
+                    <div class="hd" id="map_select_wraphd">
+                        <a href="javascript:;"><i class="map_seicon_1" title="电站名称"></i>
+                            <span class="secondnav_bg4">电站名称<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_2" title="装机功率"></i>
+                            <span class="secondnav_bg4">装机功率<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_3" title="类型"></i>
+                            <span class="secondnav_bg4">类型<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_4" title="并网时间"></i>
+                            <span class="secondnav_bg4">并网时间<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                        <a href="javascript:;"><i class="map_seicon_5" title="地址确定选择"></i>
+                            <span class="secondnav_bg4">地址确定选择<i class="secondnav_bgIcon2"></i></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="map_choose fl">
+                    <span class="map_choose_tit" style="display: none;">已选筛选条件：</span>
+                    <input type="hidden" id="ps_type">
+                    <input type="hidden" id="tools_userId" value="8643">
+                    <input type="hidden" id="tools_lang" value="zh_CN">
+                    <input type="hidden" id="ps_capacity">
+                    <input type="hidden" id="country">
+                    <input type="hidden" id="country_all">
+                    <input type="hidden" id="install_date_start">
+                    <input type="hidden" id="selectordelete" value="">
+                </div>
+            </div>
+        </div>
+        <div class="map_select clearfix just_single_show" style="display: none">
+            <div class="index_scr_sel fl">
+                <select id="ps_select" onchange="toSelectedPsChange()"></select>
+            </div>
+            <div id="psName1"></div>
+        </div>
+        <div id="contentDiv" class="map_con clearfix" style="padding-right: 80px">
+            <div id="Searchresult"></div>
+            <div id="hiddenresult" style="display: none;"></div>
+            <div class="map_con_fl fl">
+                <div id="psDetail">
+                    <div id="basecolor" class="basecolor" style="display: none"></div>
+                    <ul class="treeDemoId" @click="changeStation($event)">
+                        <li id="gs" class="on">
+                            <a href="javascript:;" title="湖北广水II期20MW">湖北广水II期20MW</a>
+                        </li>
+                        <li id="lw"><a href="javascript:;" title="宁夏灵武50MW">宁夏灵武50MW</a></li>
+                        <li id="jx"><a href="javascript:;" title="山东莒县40MW">山东莒县40MW</a></li>
+                        <li id="hl"><a href="javascript:;" title="四川会理30MW">四川会理30MW</a></li>
+                    </ul>
+                    <input id="totalCount" type="hidden" value="4">
+                </div>
+                <div class="map_con_fl_page">
+                    <div class="map_con_fl_page_b" id="Pagination">
+                        <a class="fl pager_class_color prev"></a>
+                        <a class="map_con_fl_pageprev fl prev"></a>
+                        <a class="fl pager_class_color">1</a>
+                        <a class="fl pager_class_color next"></a>
+                        <a class="map_con_fl_pagenext fl next"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="tendency_ri fr clearfix">
+                <div class="tendency_ri_tit clearfix">
+                    <span class="fl">时间范围</span>
+
+                    <div class="quick_date fl" style="width: 280px">
+                        <input id="dateHid" type="hidden" value="">
+                        <input id="cycle" type="hidden" value="15">
+                        <input id="shape" type="hidden" value="bar">
+                        <span id="quick_date1"></span>-<span id="quick_date2"></span><span id="quick_date3"></span>
+                        <!--把quick_date2设为隐藏域-->
+                    </div>
+                    <span class="date_btn fl"> <img src="../jsp/portal/resource/images/date_btn.jpg" alt=""> </span>
+
+
+                    <div class="dateWrap dateWrap_tit2_wrap" id="dateWrap_id">
+                        <div class="dateWrap_tit hd">
+                            <h1>快捷选择</h1>
+                            <ul class="clearfix dateWrap_tit2">
+                                <li class="on">日</li>
+                                <li>周</li>
+                                <li>月</li>
+                                <li>季</li>
+                                <li class="nomar">年</li>
+                            </ul>
+                        </div>
+
+                        <div class="bd ate_togg">
+                            <ul class="active">
+                                <div class="inputbox">
+                                    <div>
+                                        <input id="start" readonly="readonly" class="Wdate" type="text" value=""
+                                            onfocus="WdatePicker({dateFmt:'yyyy-MM-dd 00:00',isShowClear:false,readOnly:true, maxDate:'%y-%M-%d',lang:'zh_cn'})"
+                                            style="width:95%;">
+                                    </div>
+                                </div>
+                                <a href="javascript:;" class="wrap_su" data-dateType="twoday">确认</a>
+                            </ul>
+                            <ul>
+                                <div class="inputbox">
+                                    <input id="week" readonly="" class="Wdate" type="text"
+                                           onfocus="WdatePicker({isShowWeek:true,onpicked:funccc,errDealMode:3,isShowClear:false,readOnly:true,maxDate:'%y-%M-%d',lang:'zh_cn'})">
+                                </div>
+                                <a href="javascript:;" class="wrap_su" data-dateType="week">确认</a>
+                            </ul>
+                            <ul>
+                                <div class="inputbox">
+                                    <input id="month" readonly="" class="Wdate" type="text"
+                                           onfocus="WdatePicker({dateFmt:'yyyy-MM',isShowClear:false,readOnly:true,maxDate:'%y-%M-%d',lang:'zh_cn'})">
+                                </div>
+                                <a href="javascript:;" class="wrap_su" data-dateType="month">确认</a>
+                            </ul>
+                            <ul>
+                                <div class="inputbox">
+                                    <input type="text" id="jidu" onclick="WdatePicker({dateFmt:'yyyy年M季度', isQuarter:true,isShowClear:false,readOnly:true, isShowOK:false,disabledDates:['....-0[5-9]-..','....-1[0-2]-..'], startDate:'%y-01-01',maxDate:'%y-%M-%d',lang:sysLang})" class="Wdate" readonly="">
+                                </div>
+                                <a href="javascript:;" class="wrap_su" data-dateType="month">确认</a>
+                            </ul>
+                            <ul>
+                                <div class="inputbox">
+
+                                    <input id="year" class="Wdate" readonly="" type="text"
+                                           onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy年',maxDate:'%y-%M-%d',lang:'zh_cn'})">
+                                </div>
+                                <a href="javascript:;" class="wrap_su" data-dateType="year">确认</a>
+                            </ul>
+                        </div>
+                        <input type="hidden" name="currenttime" id="currenttime">
+                    </div>
+
+            <span class="map_select_2_se select_down1  fl tendencyChart_select2 lch_mss" onclick="selectValue(this)"
+                  style="margin-left:10px;">
+                <a href="javascript:;" class="map_select_2_sea tendencyChart_selecta lch_mssa" map="2"  id="dateDef">15min</a>
+                <ul id="dateSel" class="dateSel" @click.stop="changeDateSpace($event)">
+                    <li>
+                        <a href="javascript:;">5min</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">15min</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">60min</a>
+                    </li>
+                </ul> </span>
+
+                    <div class="fr clearfix">
+                        <div class="allsite_dateri fl clearfix allsite_dateri2"
+                             style="border-left: none;border-right: none;margin-right:0px;padding-right:0px;">
+                            <input type="checkbox" class="fl allsite_dateriCheckbox" id="setTime_point">
+                            <span class="fl reshdate">刷新时间</span>
+                            <span id="allsite_dateYear1" class="fl abcd">
+                                <em><i id="point_time">5</i>min</em>
+                                <a href="javascript:;" class="allsite_dateUpBtn1"></a>
+                                <a href="javascript:;" class="allsite_dateDownBtn1"></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tendencyChart">
+                    <!--图表-->
+                    <div class="ygheight">
+                        <div class="tendencyChart_con2" id="main" style="height: 400px"></div>
+                        <div class="tendency_table">
+                            <div class="sjqx_tab" style="height: 100%;">
+                                <div class="nbq_tab_top">
+                                    <table>
+                                        <thead id="thead">
+                                            <tr>
+                                                <th width="12%">电站名称</th>
+                                                <th width="13%">对象名</th>
+                                                <th width="30%">测点名称</th>
+                                                <th width="15%">显示</th>
+                                                <th width="12%">样式</th>
+                                                <th width="13%">统计方式</th>
+                                                <th width="5%">
+                                                    <a title="删除全部" href="javascript:;" class="delA" @click="psPoint_delAllChart">
+                                                        <img src="../jsp/portal/resource/images/delete_icon.png" alt="">
+                                                    </a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="sjqx_bottom_tab">
+                                    <table id="tendTab">
+                                        <tbody id="tbody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--tree tpl-->
+<script type="text/template" id="powerTpl0">
+    <% for(var i=0;i< newNodes.length; i++){ %>
+    <% if(newNodes[i].addOnly != undefined){ %>
+        <li id="<%=newNodes[i].id%>" class="level0 onlyOne"
+            data-isdata="<%=newNodes[i].isdata%>"
+            data-fd_tablename="<%=newNodes[i].fd_tablename%>"
+            data-fd_code="<%=newNodes[i].fd_code%>"
+            data-fd_name="<%=newNodes[i].fd_name%>"
+            data-load_once="<%=newNodes[i].load_once%>"
+                >
+            <span id="<%=newNodes[i].id%>_0<%=i%>_switch" title="" class="button level0 switch <%=newNodes[i].treeIcon%>"></span>
+            <a id="<%=newNodes[i].id%>_0<%=i%>_a" class="level0"  title="<%=newNodes[i].fd_name%>">
+                <% if(newNodes[i].icon == '' ){ %>
+                <span class="button ico_close"></span>
+                <% }else{ %>
+                <span class="button ico_close" style="background:url(<%=newNodes[i].icon%>) 0 0 no-repeat;"></span>
+                <% } %>
+                <span><%=newNodes[i].fd_name%></span>
+            </a>
+        </li>
+    <% }else{ %>
+        <li id="<%=newNodes[i].id%>" class="level0 "
+            data-isdata="<%=newNodes[i].isdata%>"
+            data-fd_tablename="<%=newNodes[i].fd_tablename%>"
+            data-fd_code="<%=newNodes[i].fd_code%>"
+            data-fd_name="<%=newNodes[i].fd_name%>"
+            data-load_once="<%=newNodes[i].load_once%>"
+                >
+            <span id="<%=newNodes[i].id%>_0<%=i%>_switch" title="" class="button level0 switch <%=newNodes[i].treeIcon%>"></span>
+            <a id="<%=newNodes[i].id%>_0<%=i%>_a" class="level0"  title="<%=newNodes[i].fd_name%>">
+                <% if(newNodes[i].icon == '' ){ %>
+                <span class="button ico_close"></span>
+                <% }else{ %>
+                <span class="button ico_close" style="background:url(<%=newNodes[i].icon%>) 0 0 no-repeat;"></span>
+                <% } %>
+                <span><%=newNodes[i].fd_name%></span>
+            </a>
+        </li>
+        <% } %>
+    <% } %>
+</script>
+
+<!--table-->
+<script type="text/template" id="station_table_tpl">
+    <% for(var i=0;i< sta_table.length; i++){ %>
+    <tr>
+        <td style="width:12%"><%=sta_table[i].psName%></td>
+        <td style="width:13%"><%=sta_table[i].psName%></td>
+        <td style="width:30%"><%=sta_table[i].fd_code_name%></td>
+        <td style="width: 15%">
+            <div>
+                <input type="text" style="display:none" value="<%=sta_table[i].color%>">
+                <input type="hidden" id="node<%=sta_table[i].vcolor%>" class="demo" value="<%=sta_table[i].color%>"/>
+            </div>
+        </td>
+        <td style="width:12%">
+            <input class='changeClass' id="ch<%=sta_table[i].value%>" type='hidden'
+                   value="<%=sta_table[i].dynamicType%>"/>
+            <span class='map_select_2_se  select_down1 fl tendencyChart_select pulldown_text'
+                  style='border:1px solid #dfdfdf;border-radius:5px;width:96px !important;height:28px;text-align:center;position: relative;left: 50%;margin-left: -50px;'><a
+                    href='javascript:;' class='map_select_2_sea tendencyChart_selecta' map='2'>柱状图</a>
+            <ul>
+                <li style="cursor:pointer"><a>柱状图</a></li>
+                <li style="cursor:pointer"><a>折线图</a></li>
+            </ul>
+            </span>
+        </td>
+
+        <td style="width:13%">
+            <input class="chCss" id=at<%=sta_table[i].value%> type="hidden">
+                <span class="map_select_2_se fl data_type_span" onclick="selectValue(this)"
+                      style="width:96px !important;height:28px;text-align:center;position: relative;left: 50%;margin-left: -50px;border:1px solid #dfdfdf;border-radius:5px;">
+                <a href="javascript:;" class="map_select_2_sea tendencyChart_selecta" map="2">采样</a>
+                    <ul class="cy_ul">
+                        <li style="cursor:pointer">采样</li>
+                        <li style="cursor:pointer">差值</li>
+                    </ul>
+                </span>
+        </td>
+        <td style='width:5%'>
+            <a href="javascript:;" class="delA" id="<%=sta_table[i].vcolor%>">
+                <img src='../jsp/portal/resource/images/delete_icon.png' alt=''>
+            </a>
+        </td>
+    </tr>
+    <% } %>
+</script>
+
+
+<script src="../jsp/portal/resource/js/jquery-1.8.3.min.js"></script>
+<script src="../js/lib/vlm.js"></script>
+<script src="../js/lib/vue.js"></script>
+<script src="../js/lib/ejs.js"></script>
+<script src="../js/common/base.js"></script>
+<script src="../js/common/esmpbase.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/slide-js.js"></script>
+<script src="../jsp/plugin/layer/layer.min.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/common.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/echarts.min.js"></script>
+<script src="../jsp/plugin/My97DatePicker/WdatePicker.js"></script>
+<script src="../jsp/portal/resource/2.0/js_new/media.js"></script>
+<script src="../js/i18n/common_zh_CN.js"></script>
+<script src="../js/common/DateUtil.js"></script>
+<script src="../jsp/plugin/easydialog/easydialog.min.js"></script>
+<script src="../jsp/plugin/jquery-select/js/select2.min.js"></script>
+<script src="../jsp/portal/resource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../jsp/portal/resource/js/showTreeImg.js"></script>
+<script src="../jsp/portal/resource/js/jquery.minicolors2.js"></script>
+<script src="../js/portal/allPsList/station_dataCurve.js"></script>
+
+
+</body>
+</html>

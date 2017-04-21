@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>东旭蓝天</title>
+    <link rel="stylesheet" href="./jsp/plugin/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="./jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="./jsp/plugin/asyncbox/skins/default.css"/>
+    <link rel="stylesheet" href="./jsp/portal/resource/css/zoom-detect.css"/>
+    <link rel="stylesheet" href="./jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="./jsp/portal/resource/css/style_blue.css"/>
+    <link rel="stylesheet" href="./jsp/portal/resource/css/index.css"/>
+</head>
+<body>
+<input id="pageTitle" type="hidden" value="psOverView"/>
+<input id="isFrist" type="hidden" value=""/>
+
+
+<div id="power_index">
+    <!--------左边-------->
+    <div class="side_nav side_navss">
+        <ul @click="leftTab($event)">
+            <li id="powerOverview">
+                <a href="javascript:;"><span class="nav_1"></span><em></em></a>
+                <span>首页</span>
+                <i class="nav_sjbg"></i>
+            </li>
+            <li id="powerMap">
+                <a href="javascript:;">
+                    <span class="nav_2"></span><em></em>
+                </a>
+                <span>电站地图</span>
+                <i class="nav_sjbg"></i>
+            </li>
+            <li id="powerList">
+                <a href="javascript:;">
+                    <span class="nav_3"></span><em></em>
+                </a>
+                <span>电站列表</span>
+                <i class="nav_sjbg"></i>
+            </li>
+            <li id="powerReport">
+                <a href="javascript:;">
+                    <span class="nav_4"></span><em></em>
+                </a>
+                <span>电站报表</span>
+                <i class="nav_sjbg"></i>
+            </li>
+            <li id="powerManage">
+                <a href="javascript:;">
+                    <span class="nav_6"></span><em></em>
+                </a>
+                <span>生产管理</span>
+                <i class="nav_sjbg"></i>
+            </li>
+        </ul>
+    </div>
+
+    <!--右侧导航start -->
+    <div class="secondnav"></div>
+    <!--右侧导航end -->
+
+    <!--弹窗-->
+    <div class="ygshow-panorama" id="showHisPageFrame" style="z-index: 1500">
+        <div class="ygshow_con clearfix">
+            <div class="Popup_showbox_top clearfix">
+                <div class="Popup_showbox_top_title fl">
+                </div>
+                <a href="javascript:;" class="Popup_showbox_top_close fr" @click="closeHisInfo()">
+                    关闭
+                </a>
+            </div>
+            <div class="Popup-iframe">
+                <iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="none"
+                        id="showHisPage" name="detail_frame" onload="void(0);" width="100%"
+                        style="overflow:hidden; height:100%;"
+                        src="">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!--------首页右头部-------->
+    <div class="index_top clearfix">
+        <input type="hidden" value="dx123456" id="b"/>
+        <input type="hidden" value="dxuser" id="a"/>
+        <input type="hidden" value="/soft/tomcat6.0/webapps/ROOT/download/" id="logo"/>
+
+        <h1 class="logo fl">
+            <div class="head_log"></div>
+        </h1>
+        <div class="index_top_right fr clearfix" style="margin-right: 15px">
+            <table style="">
+                <tr>
+                    <td>
+                            <span class="active">
+                                <i class="active_icon fl"></i>
+                                <div class="fl active_txt">
+                                    <ul id="notice_list">
+                                        <li>光伏电站运管系统v1.0版本</li>
+                                    </ul>
+                                </div>
+                            </span>
+                    </td>
+                    <td>
+                        <span class="line"></span>
+                    </td>
+                    <td>
+                        <div><a href="javascript:;" target="_Blank"
+                                class="question" title="帮助"></a></div>
+                        <div><a href="javascript:;" target="_Blank">帮助</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="clock" title="提示消息">
+                                <div id="clock_num"></div>
+                                <div class="yg-tophide" style="display:none;">
+                                    <div class="hide-topbj"></div>
+                                    <div class="hide-centerbj">
+                                        <ul>
+                                            <li>
+                                                <a href="jsp/portal/psAffair/psAffair.jsp?guzhang=show"><span
+                                                        id="order_num">  </span><span>工单提醒</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="hide-bottombj"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>提示消息</div>
+                    </td>
+
+                    <td>
+                     <span class="line">
+                    </span>
+                    </td>
+                    <td>
+                        <div><a onclick="changenewpage('/userCenterAction_getCenterPage');" class="userCenter"
+                                title="用户中心">
+                            <i id=""></i>
+                        </a>
+                        </div>
+                        <div>
+                            <a onclick="changenewpage('/userCenterAction_getCenterPage');"
+                               href="javascript:;">东旭蓝天</a>
+                        </div>
+
+                    </td>
+                    <td>
+                     <span class="line">
+                    </span>
+                    </td>
+                    <td>
+                        <div>
+                    <span class="close" style="cursor:default"><a
+                            href="/userLoginAction_logout"
+                            title="退出"><span></span></a></span>
+                        </div>
+                        <div><a href="/userLoginAction_logout">退出</a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--首页右半部分-->
+    <div class="index_right fr" id="right2.0" style="display: block">
+
+        <!--------首页右下content-------->
+        <iframe src="powerOverview.html" class="index_ifm_siz" frameborder="no" width="100%" height="100%"
+                id="index_frame">
+        </iframe>
+    </div>
+
+</div>
+
+
+<script src="./jsp/portal/resource/js/jquery-1.8.3.min.js"></script>
+<script src="./js/lib/vlm.js"></script>
+<script src="./js/lib/vue.js"></script>
+<script src="./js/lib/ejs.js"></script>
+<script src="./jsp/portal/resource/js/window_resize.js"></script>
+<script src="./js/common/esmpbase.js"></script>
+<script src="./jsp/plugin/layer/layer.min.js"></script>
+<script src="./js/i18n/common_zh_CN.js"></script>
+<script src="./jsp/plugin/easydialog/easydialog.min.js"></script>
+<script src="./jsp/plugin/easydialog/locale/easydialog_zh_CN.js"></script>
+<script src="./jsp/portal/resource/2.0/js_new/media.js"></script>
+<script src="./js/index.js"></script>
+
+</body>
+</html>

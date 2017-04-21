@@ -1,0 +1,25 @@
+{
+  "unit": "万度",
+  "powerList": [
+    {
+      "point_val": "21.12",
+      "ps_short_name": "宁夏灵武",
+      "ps_name": "宁夏灵武50MW"
+    },
+    {
+      "point_val": "19.46",
+      "ps_short_name": "山东莒县",
+      "ps_name": "山东莒县40MW"
+    },
+    {
+      "point_val": "10.81",
+      "ps_short_name": "四川会理",
+      "ps_name": "四川会理30MW"
+    },
+    {
+      "point_val": "5.84",
+      "ps_short_name": "湖北广水I期",
+      "ps_name": "湖北广水I期20MW"
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+.admin_left{
+    width:75px;
+    position:fixed;
+    left:0px;
+    top:0px;
+    z-index:9998;
+}
+.admin_left_main{
+    padding-top:80px;
+}
+.admin_left_main ul li{
+    display:block;
+    height:75px;
+    width:75px;
+    text-align:center;
+}
+.admin_left_main ul li a{
+    padding-top:15px;
+    padding-bottom:15px;
+    height:45px;
+    display:block;
+    position:relative;
+}
+.admin_left_title{
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+}
+.adminleft_ico_overview{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 0;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_overview{
+    background-position:-50px 0;
+}
+.admin_left_main ul li.on a .adminleft_ico_overview{
+    background-position:-50px 0;
+}
+.adminleft_ico_maps{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -50px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_maps{
+    background-position:-50px -50px;
+}
+.admin_left_main ul li.on a .adminleft_ico_maps{
+    background-position:-50px -50px;
+}
+.adminleft_ico_message{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -100px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_message{
+    background-position:-50px -100px;
+}
+.admin_left_main ul li.on a .adminleft_ico_message{
+    background-position:-50px -100px;
+}
+.adminleft_ico_table{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -150px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_table{
+    background-position:-50px -150px;
+}
+.admin_left_main ul li.on a .adminleft_ico_table{
+    background-position:-50px -150px;
+}
+.adminleft_ico_report{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -200px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_report{
+    background-position:-50px -200px;
+}
+.admin_left_main ul li.on a .adminleft_ico_report{
+    background-position:-50px -200px;
+}
+.adminleft_ico_production{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -250px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_production{
+    background-position:-50px -250px;
+}
+.admin_left_main ul li.on a .adminleft_ico_production{
+    background-position:-50px -250px;
+}
+.adminleft_ico_assets{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -395px;
+    width:25px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_assets{
+    background-position:-50px -395px;
+}
+.admin_left_main ul li.on a .adminleft_ico_assets{
+    background-position:-50px -395px;
+}
+.adminleft_ico_panorama{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -444px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_panorama{
+    background-position:-50px -444px;
+}
+.admin_left_main ul li.on a .adminleft_ico_panorama{
+    background-position:-50px -444px;
+}
+.adminleft_ico_knowledge{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -492px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_knowledge{
+    background-position:-49px -492px;
+}
+.admin_left_main ul li.on a .adminleft_ico_knowledge{
+    background-position:-49px -492px;
+}
+.adminleft_ico_analysis{
+    background:url(../images_new/nav_icon.png);
+    background-position:0 -535px;
+    width:26px;
+    height:34px;
+    margin:0 auto;
+}
+.admin_left_main ul li a:hover .adminleft_ico_analysis{
+    background-position:-49px -535px;
+}
+.admin_left_main ul li.on a .adminleft_ico_analysis{
+    background-position:-49px -535px;
+}
+.admin_left_title_min{
+    display:none;
+}
+@media only screen and (max-height:830px) and (min-height:200px){
+    .admin_left_main ul li{
+        display:block;
+        height:47px;
+        width:75px;
+        text-align:center;
+    }
+    .admin_left_main ul li a{
+        padding-top:10px;
+        padding-bottom:10px;
+        height:27px;
+        display:block;
+    }
+    .admin_left_main{
+        padding-top:62px;
+    }
+    .adminleft_ico_overview{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 0;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_overview{
+        background-position:-44px 0;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_overview{
+        background-position:-44px 0;
+    }
+    .adminleft_ico_maps{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -44px;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_maps{
+        background-position:-44px -44px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_maps{
+        background-position:-44px -44px;
+    }
+    .adminleft_ico_message{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -88px;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_message{
+        background-position:-44px -87px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_message{
+        background-position:-44px -87px;
+    }
+    .adminleft_ico_table{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -131px;
+        width:23px;
+        height:27px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_table{
+        background-position:-44px -131px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_table{
+        background-position:-44px -131px;
+    }
+    .adminleft_ico_report{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -175px;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_report{
+        background-position:-44px -175px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_report{
+        background-position:-44px -175px;
+    }
+    .adminleft_ico_production{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -219px;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_production{
+        background-position:-44px -219px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_production{
+        background-position:-44px -219px;
+    }
+    .adminleft_ico_assets{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -346px;
+        width:22px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_assets{
+        background-position:-44px -346px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_assets{
+        background-position:-44px -346px;
+    }
+    .adminleft_ico_panorama{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -389px;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_panorama{
+        background-position:-44px -389px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_panorama{
+        background-position:-44px -389px;
+    }
+    .adminleft_ico_knowledge{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -431px;
+        width:24px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_knowledge{
+        background-position:-43px -431px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_knowledge{
+        background-position:-43px -431px;
+    }
+    .adminleft_ico_analysis{
+        background:url(../images_new/nav_icon_min.png);
+        background-position:0 -469px;
+        width:23px;
+        height:23px;
+        margin:0 auto;
+    }
+    .admin_left_main ul li a:hover .adminleft_ico_analysis{
+        background-position:-43px -469px;
+    }
+    .admin_left_main ul li.on a .adminleft_ico_analysis{
+        background-position:-43px -469px;
+    }
+    .admin_left_title{
+        display:none;
+    }
+    .admin_left_title_min{
+        display:none;
+        position:absolute;
+        right:-65px;
+        top:10px;
+        width:55px;
+        height:30px;
+        line-height:30px;
+        padding-left:10px;
+        font-family:"Microsoft YaHei";
+        font-size:12px;
+        color:#ffffff;
+        text-align:left;
+    }
+    .admin_left_title_min em{
+        width:0;
+        display:block;
+        height:0;
+        border-top:7px solid transparent;
+        border-bottom:7px solid transparent;
+        position:absolute;
+        left:-7px;
+        top:8px;
+    }
+    .admin_left_main ul li a:hover .admin_left_title_min{
+        display:block;
+    }
+}

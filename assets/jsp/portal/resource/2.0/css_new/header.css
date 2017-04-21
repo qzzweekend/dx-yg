@@ -1,0 +1,261 @@
+.admin_header{
+    width:100%;
+    height:70px;
+    position:relative;
+    z-index:9999;
+}
+.logo{
+    /*padding-left:40px;*/
+}
+.logo a{
+    display:block;
+    height:70px;
+    background:url(../images_new/logo.png) left 15px no-repeat;
+    width:157px;
+    text-indent:-9999px;
+}
+.logo span{
+    display:block;
+    line-height:70px;
+    text-indent:20px;
+    height:70px;
+    font-family:"Microsoft YaHei";
+    font-size:22px;
+    color:#ffffff;
+}
+.header_news{
+    padding-top:25px;
+    padding-right:20px;
+}
+.header_news_ico{
+    background:url(../images_new/header_ico.png);
+    background-position:0 0;
+    width:19px;
+    height:18px;
+    float:left;
+}
+.header_news .bd{
+    padding-left:10px;
+    float:left;
+    position:relative;
+}
+.header_news .bd ul{
+    display:block;
+}
+.header_news .bd ul li{
+    display:block;
+    height:18px;
+    line-height:18px;
+}
+.header_news .bd ul li a{
+    display:block;
+    height:18px;
+    width:200px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+    color:#ffffff;
+    line-height:18px;
+}
+.header_line{
+    height:70px;
+    width:1px;
+    background:url(../images_new/line.png) center center no-repeat;
+    float:left;
+}
+.header_nav{
+    padding-left:10px;
+    padding-right:10px;
+}
+.header_nav ul li{
+    float:left;
+    height:55px;
+    display:inline;
+    padding-left:10px;
+    padding-right:10px;
+    position:relative;
+    padding-top:15px;
+}
+.header_nav ul li a{
+    display:block;
+}
+.header_ico_monitor{
+    background:url(../images_new/header_ico.png);
+    background-position:-73px 0;
+    width:19px;
+    height:20px;
+    margin:0 auto;
+}
+.header_ico_operate{
+    background:url(../images_new/header_ico.png);
+    background-position:-73px -49px;
+    width:19px;
+    height:20px;
+    margin:0 auto;
+}
+.header_ico_photovoltaic{
+    background:url(../images_new/header_ico.png);
+    background-position:-73px -100px;
+    width:12px;
+    height:20px;
+    margin:0 auto;
+}
+.header_ico_manual{
+    background:url(../images_new/header_ico.png);
+    background-position:-73px -161px;
+    width:12px;
+    height:20px;
+    margin:0 auto;
+}
+.header_ico_message{
+    background:url(../images_new/header_ico.png);
+    background-position:-73px -222px;
+    width:16px;
+    height:20px;
+    margin:0 auto;
+}
+.header_nav_title{
+    padding-top:7px;
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+    color:#ffffff;
+}
+.message_shownav{
+    position:absolute;
+    right:0px;
+    top:22px;
+    display:none;
+}
+.shownavbj_top{
+    background:url(../images_new/header_hide_top.png) no-repeat;
+    width:152px;
+    height:20px;
+    margin-top:8px;
+}
+.shownavbj_center{
+    background:url(../images_new/header_hide_center.png) repeat-y;
+    width:127px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:25px;
+    height:auto;
+}
+.shownavbj_bottom{
+    background:url(../images_new/header_hide_bottom.png) no-repeat;
+    width:152px;
+    height:15px;
+}
+.shownavbj_center a{
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+    color:#666666;
+    display:block;
+    margin-bottom:10px;
+}
+.shownavbj_center a:hover{
+    text-decoration:underline;
+}
+.shownavbj_center a span{
+    font-family:Arial;
+    font-size:12px;
+    color:#fb6832;
+    font-weight:bold;
+    margin-right:8px;
+}
+.message_num{
+    min-width:12px;
+    height:18px !important;
+    line-height:18px !important;
+    text-align:center;
+    background:#fb6832;
+    border-radius:100%;
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+    color:#fff;
+    position:absolute;
+    left:32px;
+    top:4px;
+    padding-left:3px;
+    padding-right:3px;
+}
+.admin_name{
+    padding-left:10px;
+    padding-right:10px;
+}
+.admin_name a{
+    display:block;
+    padding-top:15px;
+    height:55px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.admin_name_ico{
+    background:url(../images_new/header_ico.png);
+    background-position:-73px -277px;
+    width:18px;
+    height:20px;
+    margin:0 auto;
+}
+.admin_name_title{
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+    color:#ffffff;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    width:70px;
+    padding-top:7px;
+    text-align:center;
+}
+.admin_login a{
+    display:block;
+    padding-top:15px;
+    height:55px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.admin_login_ico{
+    background:url(../images_new/header_ico.png);
+    background-position:-139px 0;
+    width:15px;
+    height:20px;
+    margin:0 auto;
+}
+.admin_login_title{
+    font-family:"Microsoft YaHei";
+    font-size:12px;
+    color:#ffffff;
+    padding-top:7px;
+}
+@media only screen and (max-height:830px) and (min-height:200px){
+    .header_nav ul li{
+        padding-top:8px;
+        height:52px;
+    }
+    .admin_header{
+        height:60px;
+    }
+    .logo span{
+        height:60px;
+        line-height:60px;
+    }
+    .logo a{
+        height:60px;
+    }
+    .header_news{
+        padding-top:22px;
+    }
+    .header_line{
+        height:60px;
+    }
+    .admin_name a{
+        padding-top:8px;
+        height:52px;
+    }
+    .admin_login a{
+        padding-top:8px;
+        height:52px;
+    }
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="jsp/portal/resource/images/favicon.ico">
+    <link rel="stylesheet" href="jsp/plugin/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="jsp/plugin/easydialog/easydialog.css"/>
+    <link rel="stylesheet" href="jsp/portal/resource/css/style_blue.css"/>
+
+    <script src="jsp/portal/resource/js/jquery-1.8.3.min.js"></script>
+    <script src="jsp/portal/resource/js/ajaxsessionvalidate.js"></script>
+    <script src="jsp/portal/resource/js/window_resize.js"></script>
+    <script src="js/common/esmpbase.js"></script>
+    <script src="jsp/plugin/layer/layer.min.js"></script>
+    <script src="js/i18n/common_zh_CN.js"></script>
+
+
+    <script src="jsp/plugin/jquery-select/js/select2.min.js"></script>
+    <script src="jsp/plugin/easydialog/easydialog.min.js"></script>
+    <script src="jsp/plugin/easydialog/locale/easydialog_zh_CN.js"></script>
+
+    <script src="jsp/portal/resource/js/jquery-1.8.3.min.js"></script>
+    <script src="js/lib/vlm.js"></script>
+    <script src="jsp/portal/resource/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="jsp/plugin/layer/layer.min.js"></script>
+    <style>
+        .gray_btn {
+            background: url(jsp/portal/resource/2.0/images_blue/gray_btn.png) no-repeat !important;
+        }
+
+        /*2016 09 01 报表样式修改wangli*/
+        .analysis_title_main1 span {
+            display: block;
+            width: 300px;
+            font-family: "Microsoft YaHei";
+            font-size: 22px;
+            color: #6b6b6b;
+            float: left;
+        }
+
+        .analysis_title_main1 {
+            padding-left: 65px;
+            height: 33px;
+            border-bottom: 4px solid #4FAEFF;
+            float: left;
+            /*width:290px;*/
+        }
+
+        .analysis_title_main1 font {
+            display: block;
+            font-family: "Microsoft YaHei";
+            font-size: 26px;
+            color: #4faeff;
+            font-weight: bold;
+            float: left;
+        }
+
+    </style>
+
+    <script>
+        var userId;
+        var dailyUrl;//日报地址
+        var monthUrl;//月报地址
+        var yearUrl;//年报地址
+        var staticUrl;//分时发电统计表
+        var ctx = '';
+        $(document).ready(function () {
+            var user_id = 8643//获取用户id
+            userId = user_id;
+            var Parameters = {
+                "parameters": {"stationid": "", "statusstr": ""},
+                "foreEndType": 2,
+                "code": "20000006"
+            };
+            vlm.loadJson("data/report/getReportMsg.json", JSON.stringify(Parameters), function (data) {
+                //console.log(res);
+                var userId = data.user_id;
+                var reportList = data.result_data.ReportMessage;
+                var contentHead = '<ul>';
+                var content = '';
+                var contentAll = '';
+                var diyContent = '';
+                var diycontentAll = '';
+                var grouptContent = '';
+                var groupContentAll = '';
+                //循环遍历数组
+                if (reportList != null && reportList != '') {
+                    for (var i = 0; i < reportList.length; i++) {
+                        //
+                        var obj = reportList[i];
+                        var showUrl = 'dialog/powerReportDetail.html' + '?id=' + userId + "&urlid=" + obj.moudle_url;
+                        var photoUrl = ctx + obj.photo_url;
+                        if (obj.type == 1) {//电站报表
+                            if (obj.ischeck == 0) {//不允许点击 按钮显示为灰色 2016 08 11
+                                content = content + '<li>' +
+                                        '<div class="analysis_list_img">' +
+                                        '<img src="' + photoUrl + '" onclick="return false;"/>' +
+                                        '<div class="analysis_list_triangle"></div><div class="analysis_show_title"><a href="#" onclick="return  false;">' + obj.report_name + '</a></div>' +
+                                        '</div>' +
+                                        '<div class="analysis_list_bottom"><span>' + obj.report_name + '<em></em>' +
+                                        '<a href="javascript:void(0);"  onclick="return  false;">' + '查看' + '</a>' +
+                                        '</div>' +
+                                        '</li>';
+                            } else if (obj.ischeck == 1) {//按钮允许点击
+                                content = content + '<li>' +
+                                        '<div class="analysis_list_img">' +
+                                        '<img src="' + photoUrl + '" onclick="openReportPage(\'' + showUrl + '\')"/>' +
+                                        '<div class="analysis_list_triangle"></div><div class="analysis_show_title"><a href="#" onclick="openReportPage(\'' + showUrl + '\');">' + obj.report_name + '</a></div>' +
+                                        '</div>' +
+                                        '<div class="analysis_list_bottom"><span>' + obj.report_name + '<em></em>' +
+                                        '<a href="javascript:void(0);" onclick="openReportPage(\'' + showUrl + '\');">' + '查看' + '</a>' +
+                                        '</div>' +
+                                        '</li>';
+                            }
+                        } else if (obj.type == 2) {//自定义类型报表
+                            $("#diyReportHead").css("display", "block");
+                            $("#diyReportContent").css("display", "block");
+                            if (obj.ischeck == 0) {//不允许点击 按钮显示灰色
+                                diyContent = diyContent + '<li>' +
+                                        '<div class="analysis_list_img">' +
+                                        '<img src="' + photoUrl + '" onclick="return false;"/>' +
+                                        '<div class="analysis_list_triangle"></div><div class="analysis_show_title"><a href="#" onclick="return  false;">' + obj.report_name + '</a></div>' +
+                                        '</div>' +
+                                        '<div class="analysis_list_bottom"><span>' + obj.report_name + '<em></em>' +
+                                        '<a href="javascript:void(0);"  onclick="return false;">' + '查看' + '</a>' +
+                                        '</div>' +
+                                        '</li>';
+                            } else if (obj.ischeck == 1) {//允许点击
+                                diyContent = diyContent + '<li>' +
+                                        '<div class="analysis_list_img">' +
+                                        '<img src="' + photoUrl + '" onclick="openReportPage(\'' + showUrl + '\')"/>' +
+                                        '<div class="analysis_list_triangle"></div><div class="analysis_show_title"><a href="#" onclick="openReportPage(\'' + showUrl + '\');">' + obj.report_name + '</a></div>' +
+                                        '</div>' +
+                                        '<div class="analysis_list_bottom"><span>' + obj.report_name + '<em></em>' +
+                                        '<a href="javascript:void(0);" onclick="openReportPage(\'' + showUrl + '\');">' + '查看' + '</a>' +
+                                        '</div>' +
+                                        '</li>';
+                            }
+                        } else if (obj.type == 3) {//集团报表
+                            $("#groupReportHead").css("display", "block");//如果有集团报表就显示该div
+                            $("#groupReport").css("display", "block");//如果有集团报表就显示该div
+
+                            if (obj.ischeck == 0) {//不允许点击 显示为灰色按钮
+                                grouptContent = grouptContent + '<li>' +
+                                        '<div class="analysis_list_img">' +
+                                        '<img src="' + photoUrl + '" onclick="return false;"/>' +
+                                        '<div class="analysis_list_triangle"></div><div class="analysis_show_title"><a href="#" onclick="return  false;">' + obj.report_name + '</a></div>' +
+                                        '</div>' +
+                                        '<div class="analysis_list_bottom"><span>' + obj.report_name + '<em></em>' +
+                                        '<a href="javascript:void(0);"  onclick="return  false;">' + '查看' + '</a>' +
+                                        '</div>' +
+                                        '</li>';
+                            } else if (obj.ischeck == 1) {//允许点击
+                                grouptContent = grouptContent + '<li>' +
+                                        '<div class="analysis_list_img">' +
+                                        '<img src="' + photoUrl + '" onclick="openReportPage(\'' + showUrl + '\')"/>' +
+                                        '<div class="analysis_list_triangle"></div><div class="analysis_show_title"><a href="#" onclick="openReportPage(\'' + showUrl + '\');">' + obj.report_name + '</a></div>' +
+                                        '</div>' +
+                                        '<div class="analysis_list_bottom"><span>' + obj.report_name + '<em></em>' +
+                                        '<a href="javascript:void(0);" onclick="openReportPage(\'' + showUrl + '\');">' + '查看' + '</a>' +
+                                        '</div>' +
+                                        '</li>';
+                            }
+                        }
+                    }
+                }
+                contentAll = contentHead + content + '</ul>';
+                diycontentAll = contentHead + diyContent + '</ul>';
+                groupContentAll = contentHead + grouptContent + '</ul>';
+                $("#reportContent").html(contentAll);
+                $("#diyReportContent").html(diycontentAll);
+                $("#groupReport").html(groupContentAll);
+            });
+        });
+
+    </script>
+</head>
+<body style="background-color: #f9f9f7">
+
+<link rel="stylesheet" href="jsp/plugin/css3-buttons/gh-buttons.css"/>
+<link rel="stylesheet" href="jsp/portal/resource/2.0/css_new/header.css"/>
+<link rel="stylesheet" href="jsp/portal/resource/2.0/css_new/left.css"/>
+<script src="jsp/portal/resource/2.0/js_new/jquery.min.js"></script>
+<script src="js/common/esmpbase.js"></script>
+<script src="jsp/portal/resource/2.0/js_new/slide-js.js"></script>
+<script src="jsp/plugin/layer/locale/layer_zh_CN.js"></script>
+<script src="jsp/plugin/layer/layer.min.js"></script>
+
+<script src="jsp/portal/resource/2.0/js_new/common.js"></script>
+<script src="jsp/portal/resource/2.0/js_new/echarts.min.js"></script>
+<script language="javascript" src="jsp/plugin/My97DatePicker/WdatePicker.js"></script>
+<script>
+    var ctx = '';
+    var testFlag = '0';
+    var styleSrc;
+    var colorFlag = 'style_blue';
+    if ("style" == colorFlag) {//æ©è²
+        styleSrc = ctx + "jsp/portal/resource/css/style_2.0.css";
+        loadStyle(styleSrc);
+    } else if ("style_blue" == colorFlag) {
+        styleSrc = ctx + "jsp/portal/resource/css/style_2.0_blue.css";
+        loadStyle(styleSrc);
+    }
+    if (typeof(resizePage) != "undefined") {
+        resizePage();
+    }
+</script>
+<script src="jsp/portal/resource/2.0/js_new/media.js"></script>
+<form id="reportId" action="" method="post">
+    <div id="reportPage" class="adminbox">
+        <div class="analysis_box">
+            <!--电站报表-->
+            <div class="analysis_title clearfix">
+                <div class="analysis_title_main1 clearfix">
+                    <span>电站报表</span>
+                    <font></font>
+                </div>
+            </div>
+            <div class="analysis_list clearfix" id="reportContent"></div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function openReportPage(url, urlid) {
+        if ($(event.target).hasClass("clickedButton")) {
+            return;
+        }
+        $(".clickedButton").removeClass("clickedButton");
+        var tgt = event.target;
+        if ($.trim($(tgt).html()) == '查看') {
+            $(tgt).addClass("clickedButton");
+        }
+        var height = $("#reportPage").height();
+        var strFullPath = window.document.location.href;
+        var strPath = window.document.location.pathname;
+        var prePath = ctx;
+        /*$("#div_ifr_frame").attr("src",prePath + url);
+         $("#div_ifr_frame").attr("height",$(window).height()-65);
+         $("#div_ifr").show();*/
+
+        parent.$("#index_frame").attr("src", prePath + url);
+//        parent.$("#index_frame").height($(window).height()-65);
+        //$("#div_ifr").show();
+        //$("#reportPage").hide();
+    }
+
+    //    $(window).resize(function(){
+    //        $("#index_frame").height($(window).height()-65);
+    //    });
+</script>
+
+</body>
+</html>
